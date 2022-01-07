@@ -32,6 +32,7 @@ msg_end = "##########"
 
 # 建立统计函数
 def Count_call():
+    global name_list
     name_unsign = name_list
     mem_stat = {}
     wx.LoadMoreMessage()
