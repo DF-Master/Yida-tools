@@ -108,7 +108,7 @@ if __name__ == "__main__":
     repeat_list_3015, unrepeat_list_60_30, unrepeat_list_60_15, ratio_1, ratio_2 = cal_same_link_pos(
         crosslink_file_60_30, crosslink_file_60_15, bsa_fasta, set=True)
     repeat_list_303, unrepeat_list_60_30, unrepeat_list_60_3, ratio_3, ratio_4 = cal_same_link_pos(
-        crosslink_file_60_30, crosslink_file_90_10, bsa_fasta, set=True)
+        crosslink_file_60_30, crosslink_file_30_10, bsa_fasta, set=True)
     print(repeat_list_3015, repeat_list_303, ratio_1, ratio_2, ratio_3,
           ratio_4)
     print(cal_repeat_list(repeat_list_3015, repeat_list_303))
