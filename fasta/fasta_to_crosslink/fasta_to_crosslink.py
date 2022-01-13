@@ -3,13 +3,13 @@ from os import uname_result
 # Def
 bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
 
-crosslink_file_30_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_30_10_HCDFT_result_filtered.csv'
-crosslink_file_60_3 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_3_HCDFT_result_filtered.csv'
-crosslink_file_60_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_10_HCDFT_result_filtered.csv'
-crosslink_file_60_15 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_15_HCDFT_result_filtered.csv'
-crosslink_file_60_30 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_30_HCDFT_result_filtered.csv'
-crosslink_file_90_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_90_10_HCDFT_result_filtered.csv'
-crosslink_file_BSA = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_BSA_HCDFT_result_filtered.csv'
+crosslink_file_30_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_30_10_HCDFT_result_filtered.csv'
+crosslink_file_60_3 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_3_HCDFT_result_filtered.csv'
+crosslink_file_60_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_10_HCDFT_result_filtered.csv'
+crosslink_file_60_15 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_15_HCDFT_result_filtered.csv'
+crosslink_file_60_30 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_60_30_HCDFT_result_filtered.csv'
+crosslink_file_90_10 = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_90_10_HCDFT_result_filtered.csv'
+crosslink_file_BSA = 'C:/Users/jiang/OneDrive/科研/tc/实验记录/2021/20211105 365crosslink/20211115_tangchun_BSA/WXZ_20211108_BSA_HCDFT_result_filtered.csv'
 
 
 def find_loc_in_fasta(pep, fasta):
@@ -25,6 +25,7 @@ def find_loc_in_fasta(pep, fasta):
             return start_pos, end_pos
         else:
             print("Find pep Fail:", pep)
+            return 0, 0
 
 
 def find_link_pos(ms_peptide, fasta):
@@ -104,6 +105,39 @@ def cal_same_link_pos(ms_file_1, ms_file_2, fasta, set=False):
     ]
 
 
+def report_animo_ratio(link_list, hard_animo="K"):
+    # Input list like [["K","L"],["Y","K"],……]
+    animo_list = list("ACDEFGHIKLMNPQRSTVWY")
+    cross_dic = {}
+    for animo_tag in animo_list:
+        cross_dic[animo_tag] = 0
+    cross_dic["all"] = 0
+    cross_dic["nofind"] = 0
+
+    for cross_dimer in link_list:
+        if cross_dimer[0] == hard_animo:
+            cross_dic[cross_dimer[1]] += 1
+            cross_dic["all"] += 1
+        elif cross_dimer[1] == hard_animo:
+            cross_dic[cross_dimer[0]] += 1
+            cross_dic["all"] += 1
+        else:
+            cross_dic["nofind"] += 0
+
+    return cross_dic
+
+
+def draw_cross_pep_list(dir):
+    cross_pep_list = []
+    with open(dir) as f:
+        reader = csv.reader(f)
+        for target in reader:
+            if "-" in target[5]:
+                cross_pep_list.append(target[5])
+    # print(cross_pep_list)
+    return cross_pep_list
+
+
 if __name__ == "__main__":
     repeat_list_3015, unrepeat_list_60_30, unrepeat_list_60_15, ratio_1, ratio_2 = cal_same_link_pos(
         crosslink_file_60_30, crosslink_file_60_15, bsa_fasta, set=True)
@@ -112,3 +146,9 @@ if __name__ == "__main__":
     print(repeat_list_3015, repeat_list_303, ratio_1, ratio_2, ratio_3,
           ratio_4)
     print(cal_repeat_list(repeat_list_3015, repeat_list_303))
+
+    cross_list = [[i[0][2], i[1][2]] for i in [
+        find_link_pos(j, bsa_fasta)
+        for j in draw_cross_pep_list(crosslink_file_60_30)
+    ]]
+    print(report_animo_ratio(cross_list))
