@@ -128,8 +128,8 @@ if __name__ == '__main__':
     schedule.every().day.at("09:30").do(Sign_Helper)
     schedule.every().day.at("12:00").do(Sign_Helper)
     schedule.every().day.at("16:50").do(Sign_Helper)
-    schedule.every(1).minutes.do(Listen_Order)
+    # schedule.every(1).minutes.do(Listen_Order)
 
     while True:
         schedule.run_pending()  # 运行所有可以运行的任务
-        time.sleep(1)
+        time.sleep(30)
