@@ -111,7 +111,7 @@ def cal_same_link_pos(ms_file_1,
                       set=False,
                       simple_mode=False,
                       filtermode=True,
-                      threshold=1,
+                      threshold=0.75,
                       ms_peptide_list=5,
                       f2sf=False):
     if f2sf == True:
