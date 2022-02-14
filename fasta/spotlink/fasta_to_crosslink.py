@@ -45,9 +45,15 @@ def report_link_pos(ms_file, fasta, ms_peptide_list=5):
             try:
                 link_pos_list.append(
                     find_link_pos(target[ms_peptide_list], fasta))
-            except:
-                print("Target link position cannot be analyzed:", target[5])
 
+                link_pos_list[-1].append(
+                    [target[ms_peptide_list + 5], target[ms_peptide_list + 6]])
+            except:
+                if target[
+                        ms_peptide_list] != "Alpha Peptide Protein" and target[
+                            ms_peptide_list] != "Peptide":
+                    print("Target link position cannot be analyzed:",
+                          target[ms_peptide_list])
     return link_pos_list
 
 
@@ -66,16 +72,33 @@ def cal_repeat_list(list_1, list_2, simple_mode=False):
         i for i in list_2 if i not in unrepeat_list_2 and i not in repeat_list
     ]
     if simple_mode == False:
-        return [
-            repeat_list, unrepeat_list_1, unrepeat_list_2,
-            len(repeat_list) / (len(unrepeat_list_1) + len(repeat_list)),
-            len(repeat_list) / (len(unrepeat_list_2) + len(repeat_list))
-        ]
+        try:
+            return [
+                repeat_list, unrepeat_list_1, unrepeat_list_2,
+                len(repeat_list) / (len(unrepeat_list_1) + len(repeat_list)),
+                len(repeat_list) / (len(unrepeat_list_2) + len(repeat_list))
+            ]
+        except:
+            return [
+                repeat_list, unrepeat_list_1, unrepeat_list_2,
+                (len(unrepeat_list_1) + len(repeat_list)),
+                (len(unrepeat_list_2) + len(repeat_list))
+            ]
+
     else:
-        print(
-            len(repeat_list) / (len(unrepeat_list_1) + len(repeat_list)),
-            len(repeat_list) / (len(unrepeat_list_2) + len(repeat_list)))
-        return [repeat_list]
+        try:
+            print(
+                len(repeat_list) / (len(unrepeat_list_1) + len(repeat_list)),
+                len(repeat_list) / (len(unrepeat_list_2) + len(repeat_list)),
+                len(repeat_list), (len(unrepeat_list_1) + len(repeat_list)),
+                (len(unrepeat_list_2) + len(repeat_list)))
+            return [repeat_list]
+        except:
+            print((len(unrepeat_list_1) + len(repeat_list)),
+                  (len(unrepeat_list_2) + len(repeat_list)), len(repeat_list),
+                  (len(unrepeat_list_1) + len(repeat_list)),
+                  (len(unrepeat_list_2) + len(repeat_list)))
+            return [repeat_list]
 
 
 def fdr2sfdr(file_name):
@@ -87,6 +110,8 @@ def cal_same_link_pos(ms_file_1,
                       fasta,
                       set=False,
                       simple_mode=False,
+                      filtermode=True,
+                      threshold=1,
                       ms_peptide_list=5,
                       f2sf=False):
     if f2sf == True:
@@ -99,6 +124,16 @@ def cal_same_link_pos(ms_file_1,
     report_list_2 = report_link_pos(ms_file_2,
                                     fasta,
                                     ms_peptide_list=ms_peptide_list)
+
+    if filtermode == True:
+        report_list_1 = sorted(report_list_1,
+                               key=lambda x: x[2][1],
+                               reverse=True)[0:int(threshold *
+                                                   len(report_list_1))]
+        report_list_2 = sorted(report_list_2,
+                               key=lambda x: x[2][1],
+                               reverse=True)[0:int(threshold *
+                                                   len(report_list_2))]
     if set == False:
         hard_loc_list_1 = [[i[0][-1], i[1][-1]] for i in report_list_1]
         hard_loc_list_2 = [[i[0][-1], i[1][-1]] for i in report_list_2]
@@ -119,12 +154,28 @@ def cal_same_link_pos(ms_file_1,
             repeat_ratio_2
         ]
     else:
-        print(repeat_ratio_1, repeat_ratio_2)
+        print(repeat_ratio_1, repeat_ratio_2, len(repeat_list),
+              len(hard_loc_list_1), len(hard_loc_list_2))
+        report_animo_ratio(repeat_list,
+                           pos_form=True,
+                           fasta_file=fasta,
+                           tableform=True)
         return [repeat_list]
 
 
-def report_animo_ratio(link_list, hard_animo="K"):
+def report_animo_ratio(
+        link_list,
+        hard_animo="K",
+        pos_form=False,
+        fasta_file='MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA',
+        tableform=False):
     # Input list like [["K","L"],["Y","K"],……]
+    if pos_form == True:
+        pos_list = link_list
+        link_list = []
+        for i in pos_list:
+            link_list.append(
+                [fasta_file[int(i[0]) - 1], fasta_file[int(i[1]) - 1]])
     animo_list = list("ACDEFGHIKLMNPQRSTVWY")
     cross_dic = {}
     for animo_tag in animo_list:
@@ -141,18 +192,33 @@ def report_animo_ratio(link_list, hard_animo="K"):
             cross_dic["all"] += 1
         else:
             cross_dic["nofind"] += 0
-
-    return cross_dic
+    if tableform == False:
+        return cross_dic
+    # Out dic like {'A': 31, 'C': 26, 'D': 72, 'E': 117, 'F': 11, 'G': 25,……
+    else:
+        print('|A|C|D|E|F|G|H|I|K|L|M|N|P|Q|R|S|T|V|W|Y|ALL|')
+        print('|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|---|')
+        tableformdata = []
+        for i in cross_dic:
+            if i != 'all':
+                tableformdata.append(
+                    format(cross_dic[i] / cross_dic['all'], '.3f'))
+            elif i == 'all':
+                tableformdata.append(str(cross_dic['all']) + "|")
+                break
+        tableformdata = '|'.join(tableformdata)
+        print('|' + tableformdata)
+        return cross_dic
 
 
 # Open spotlink file and report ms_peptide
-def draw_cross_pep_list(dir):
+def draw_cross_pep_list(dir, ms_peptide_list=5):
     cross_pep_list = []
     with open(dir) as f:
         reader = csv.reader(f)
         for target in reader:
-            if "-" in target[5]:
-                cross_pep_list.append(target[5])
+            if "-" in target[ms_peptide_list]:
+                cross_pep_list.append(target[ms_peptide_list])
     # print(cross_pep_list)
     return cross_pep_list
 
@@ -179,44 +245,86 @@ if __name__ == "__main__":
     crosslink_file_1108_M3_fDR = 'G:/MSdata/211200BSA/20220120-plink/WXZ_20211108_60_3_HCDFT_result_filtered.csv'
     crosslink_file_1108_N_fDR = 'G:/MSdata/211200BSA/20220120-plink/WXZ_20211108_BSA_HCDFT_result_filtered.csv'
 
-    crosslink_file_0118_M10_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M10_HCDFT_result_filtered.csv'
-    crosslink_file_0118_M30_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M30_HCDFT_result_filtered.csv'
-    crosslink_file_0118_M1_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M1_HCDFT_result_filtered.csv'
-    crosslink_file_0118_S30_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S30_HCDFT_result_filtered.csv'
-    crosslink_file_0118_S15_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S15_HCDFT_result_filtered.csv'
-    crosslink_file_0118_S10_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S10_HCDFT_result_filtered.csv'
-    crosslink_file_0118_S5_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S5_HCDFT_result_filtered.csv'
-    crosslink_file_0118_S1_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S1_HCDFT_result_filtered.csv'
-    crosslink_file_0118_N_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_N_HCDFT_result_filtered.csv'
+    crosslink_file_0114_M10_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M10_HCDFT_result_filtered.csv'
+    crosslink_file_0114_M30_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M30_HCDFT_result_filtered.csv'
+    crosslink_file_0114_M1_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_M1_HCDFT_result_filtered.csv'
+    crosslink_file_0114_S30_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S30_HCDFT_result_filtered.csv'
+    crosslink_file_0114_S15_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S15_HCDFT_result_filtered.csv'
+    crosslink_file_0114_S10_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S10_HCDFT_result_filtered.csv'
+    crosslink_file_0114_S5_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S5_HCDFT_result_filtered.csv'
+    crosslink_file_0114_S1_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_S1_HCDFT_result_filtered.csv'
+    crosslink_file_0114_N_fDR = 'G:/MSdata/220118BSA/20220120-plink/JYD_20220114_N_HCDFT_result_filtered.csv'
 
-    repeat_list_s3001 = cal_same_link_pos(crosslink_file_1108_M3_fDR,
-                                          crosslink_file_1108_M30_fDR,
-                                          bsa_fasta,
-                                          set=True,
-                                          simple_mode=True,
-                                          f2sf=True)[0]
+    crosslink_file_0118_B_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_B_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BM10_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BM10_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS1_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS1_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS2_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS2_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS3_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS3_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS5_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS5_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS10_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS10_HCDFT_result_filtered.csv'
+    crosslink_file_0118_BS30_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS30_HCDFT_result_filtered.csv'
 
-    repeat_list_3010 = cal_same_link_pos(crosslink_file_1108_M10_fDR,
-                                         crosslink_file_1108_M30_fDR,
-                                         bsa_fasta,
-                                         set=True,
-                                         simple_mode=True,
-                                         f2sf=True)[0]
+    # repeat_list_S30 = cal_same_link_pos(crosslink_file_0118_BS30_fDR,
+    #                                     crosslink_file_0118_BM10_fDR,
+    #                                     bsa_fasta,
+    #                                     set=True,
+    #                                     simple_mode=True,
+    #                                     f2sf=True)[0]
 
-    repeat_list_N = cal_same_link_pos(crosslink_file_1108_N_fDR,
-                                      crosslink_file_1108_M30_fDR,
-                                      bsa_fasta,
-                                      set=True,
-                                      simple_mode=True,
-                                      f2sf=True)[0]
+    # repeat_list_S10 = cal_same_link_pos(crosslink_file_0118_BS10_fDR,
+    #                                     crosslink_file_0118_BM10_fDR,
+    #                                     bsa_fasta,
+    #                                     set=True,
+    #                                     simple_mode=True,
+    #                                     f2sf=False)[0]
 
-    a = cal_repeat_list(repeat_list_3010, repeat_list_s3001,
-                        simple_mode=True)[0]
-    import pdb_distance_analyze
+    # repeat_list_S5 = cal_same_link_pos(crosslink_file_0118_BS5_fDR,
+    #                                    crosslink_file_0118_BM10_fDR,
+    #                                    bsa_fasta,
+    #                                    set=True,
+    #                                    simple_mode=True,
+    #                                    f2sf=True)[0]
 
-    for i in a:
-        print(
-            i,
-            pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
-                                              'G:/MSdata/bsa.pdb'),
-            bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
+    # repeat_list_S3 = cal_same_link_pos(crosslink_file_0118_BS3_fDR,
+    #                                    crosslink_file_0118_BM10_fDR,
+    #                                    bsa_fasta,
+    #                                    set=True,
+    #                                    simple_mode=True,
+    #                                    f2sf=True)[0]
+
+    # repeat_list_S2 = cal_same_link_pos(crosslink_file_0118_BS2_fDR,
+    #                                    crosslink_file_0118_BM10_fDR,
+    #                                    bsa_fasta,
+    #                                    set=True,
+    #                                    simple_mode=True,
+    #                                    f2sf=True)[0]
+
+    # repeat_list_S1 = cal_same_link_pos(crosslink_file_0118_BS1_fDR,
+    #                                    crosslink_file_0118_BM10_fDR,
+    #                                    bsa_fasta,
+    #                                    set=True,
+    #                                    simple_mode=True,
+    #                                    f2sf=True)[0]
+
+    # repeat_list_N = cal_same_link_pos(crosslink_file_0118_B_fDR,
+    #                                   crosslink_file_0118_BM10_fDR,
+    #                                   bsa_fasta,
+    #                                   set=True,
+    #                                   simple_mode=True,
+    #                                   f2sf=True)[0]
+
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_S10, simple_mode=True)[0]
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_S5, simple_mode=True)[0]
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_S3, simple_mode=True)[0]
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_S2, simple_mode=True)[0]
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_S1, simple_mode=True)[0]
+    # a = cal_repeat_list(repeat_list_S30, repeat_list_N, simple_mode=True)[0]
+
+    # import pdb_distance_analyze
+
+    # for i in a:
+    #     print(
+    #         i,
+    #         pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
+    #                                           'G:/MSdata/bsa.pdb'),
+    #         bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
