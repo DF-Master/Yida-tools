@@ -1,4 +1,6 @@
 import csv
+import pdb_distance_analyze
+import numpy as np
 
 
 def find_loc_in_fasta(pep, fasta):
@@ -37,17 +39,20 @@ def find_link_pos(ms_peptide, fasta):
             ]]
 
 
-def report_link_pos(ms_file, fasta, ms_peptide_list=5):
+def report_link_pos(ms_csv_file, fasta, ms_peptide_list=5):
+    # Spotlink
     link_pos_list = []
-    with open(ms_file, "r") as f:
+    with open(ms_csv_file, "r") as f:
         reader = csv.reader(f)
         for target in reader:
             try:
                 link_pos_list.append(
                     find_link_pos(target[ms_peptide_list], fasta))
 
-                link_pos_list[-1].append(
-                    [target[ms_peptide_list + 5], target[ms_peptide_list + 6]])
+                link_pos_list[-1].append([
+                    target[ms_peptide_list + 5], target[ms_peptide_list + 6],
+                    target[ms_peptide_list + 7]
+                ])
             except:
                 if target[
                         ms_peptide_list] != "Alpha Peptide Protein" and target[
@@ -102,6 +107,7 @@ def cal_repeat_list(list_1, list_2, simple_mode=False):
 
 
 def fdr2sfdr(file_name):
+    # Spotlink
     return 'site'.join(file_name.split('result'))
 
 
@@ -114,6 +120,7 @@ def cal_same_link_pos(ms_file_1,
                       threshold=0.75,
                       ms_peptide_list=5,
                       f2sf=False):
+    #Spotlink
     if f2sf == True:
         ms_file_1 = fdr2sfdr(ms_file_1)
         ms_file_2 = fdr2sfdr(ms_file_2)
@@ -134,6 +141,7 @@ def cal_same_link_pos(ms_file_1,
                                key=lambda x: x[2][1],
                                reverse=True)[0:int(threshold *
                                                    len(report_list_2))]
+
     if set == False:
         hard_loc_list_1 = [[i[0][-1], i[1][-1]] for i in report_list_1]
         hard_loc_list_2 = [[i[0][-1], i[1][-1]] for i in report_list_2]
@@ -223,9 +231,6 @@ def draw_cross_pep_list(dir, ms_peptide_list=5):
     return cross_pep_list
 
 
-# Out dic like {'A': 31, 'C': 26, 'D': 72, 'E': 117, 'F': 11, 'G': 25,……
-
-
 def report_animo_dic(ms_csv_dir, hard_animo="K"):
     cross_list = [
         [i[0][2], i[1][2]] for i in
@@ -233,6 +238,107 @@ def report_animo_dic(ms_csv_dir, hard_animo="K"):
         if 0 not in [i[0][3], i[0][4], i[1][3], i[1][4]]
     ]
     return report_animo_ratio(cross_list, hard_animo=hard_animo)
+
+
+def count_element(target_list):
+    count_list = [[], []]
+    for i in target_list:
+        if i not in count_list[0]:
+            count_list[0].append(i)
+            count_list[1].append(target_list.count(i))
+
+    return list(map(list, zip(*count_list)))
+
+
+def filter_baseonrepeat(target_list, repeat_times=3):
+    repeat_list = count_element(target_list)
+    print(repeat_list)
+    filtered_list = []
+
+    for i in repeat_list:
+        if i[1] >= repeat_times:
+            filtered_list.append(i[0])
+
+    print('All elements', len(repeat_list), ', repeat threshold', repeat_times,
+          ', Reserved elements', len(filtered_list))
+
+    return filtered_list
+
+
+def cal_distance(pos_list,
+                 pdb_file='G:/MSdata/bsa.pdb',
+                 max_distance=16,
+                 min_distance=5):
+
+    dis_list = [[], []]
+    over_max_num = 0
+    over_min_num = 0
+    for i in pos_list:
+        dis = float(
+            format(
+                pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
+                                                  pdb_file), '.5f'))
+        if dis >= max_distance:
+            over_max_num += 1
+        elif dis <= min_distance:
+            over_min_num += 1
+        print(i, dis, bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
+        dis_list[0].append(i)
+        dis_list[1].append(dis)
+
+    print("Average", format(np.mean(dis_list[1]), '.5f'), ', Median',
+          format(np.median(dis_list[1]), '.5f'), ', Num', len(dis_list[1]),
+          ', Over Max Num', over_max_num, ', Over Min Num', over_min_num)
+
+    dis_list = list(map(list, zip(*dis_list)))
+
+    return dis_list
+
+
+def report_valid_link_sfDR(
+        ms_csv_dir,
+        fasta="MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA",
+        set=True,
+        filtermode=True,
+        least_ssn=2,
+        threshold=0.75,
+        ms_peptide_list=2,
+        f2sf=True):
+    # Spotlink
+    if f2sf == True:
+        ms_csv_dir = fdr2sfdr(ms_csv_dir)
+        ms_peptide_list = 2
+
+    report_list = report_link_pos(ms_csv_dir,
+                                  fasta,
+                                  ms_peptide_list=ms_peptide_list)
+
+    if filtermode == True:
+        report_list = [
+            i for i in sorted(report_list, key=lambda x: x[2][1], reverse=True)
+            [0:int(threshold * len(report_list))] if int(i[2][2]) >= least_ssn
+        ]
+
+    if set == False:
+        hard_loc_list = [[
+            max([i[0][-1], i[1][-1]]),
+            min([i[0][-1], i[1][-1]])
+        ] for i in report_list]
+    elif set == True:
+        hard_loc_list_all = [[
+            max([i[0][-1], i[1][-1]]),
+            min([i[0][-1], i[1][-1]])
+        ] for i in report_list]
+        hard_loc_list = []
+        for i in hard_loc_list_all:
+            if i not in hard_loc_list:
+                hard_loc_list.append(i)
+
+    report_animo_ratio(hard_loc_list,
+                       pos_form=True,
+                       fasta_file=fasta,
+                       tableform=True)
+    return [hard_loc_list]
 
 
 if __name__ == "__main__":
@@ -263,6 +369,36 @@ if __name__ == "__main__":
     crosslink_file_0118_BS5_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS5_HCDFT_result_filtered.csv'
     crosslink_file_0118_BS10_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS10_HCDFT_result_filtered.csv'
     crosslink_file_0118_BS30_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_BS30_HCDFT_result_filtered.csv'
+
+    BM10_0118 = report_valid_link_sfDR(crosslink_file_0118_BM10_fDR,
+                                       bsa_fasta)[0]
+    BM10_0114 = report_valid_link_sfDR(crosslink_file_0114_M10_fDR,
+                                       bsa_fasta)[0]
+    BM10_1108 = report_valid_link_sfDR(crosslink_file_1108_M10_fDR,
+                                       bsa_fasta)[0]
+    BM15_1108 = report_valid_link_sfDR(crosslink_file_1108_M15_fDR,
+                                       bsa_fasta)[0]
+    BM10_all = BM10_0118 + BM10_0114
+    fBM10_all = filter_baseonrepeat(BM10_all, repeat_times=2)
+
+    BS5_0118 = report_valid_link_sfDR(crosslink_file_0118_BS5_fDR,
+                                      bsa_fasta)[0]
+    BS5_0114 = report_valid_link_sfDR(crosslink_file_0114_S5_fDR, bsa_fasta)[0]
+    BS10_0118 = report_valid_link_sfDR(crosslink_file_0118_BS10_fDR,
+                                       bsa_fasta)[0]
+    BS10_0114 = report_valid_link_sfDR(crosslink_file_0114_S10_fDR,
+                                       bsa_fasta)[0]
+    BS3_0118 = report_valid_link_sfDR(crosslink_file_0118_BS3_fDR,
+                                      bsa_fasta)[0]
+    BS2_0118 = report_valid_link_sfDR(crosslink_file_0118_BS2_fDR,
+                                      bsa_fasta)[0]
+    BS1_0118 = report_valid_link_sfDR(crosslink_file_0118_BS1_fDR,
+                                      bsa_fasta)[0]
+
+    BS5_all = BS5_0118 + BS5_0114
+
+    fBS5_all = filter_baseonrepeat(BS5_all, repeat_times=2)
+    cal_distance(fBM10_all)
 
     # repeat_list_S30 = cal_same_link_pos(crosslink_file_0118_BS30_fDR,
     #                                     crosslink_file_0118_BM10_fDR,

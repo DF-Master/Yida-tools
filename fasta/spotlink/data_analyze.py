@@ -104,64 +104,64 @@ crosslink_file_0118_US1_fDR = 'G:/MSdata/220125UBBSA/spotlink/WXZ_20220118_US1_H
 
 #Test 0114 and Test 0118
 
-repeat_list_01140118_M10 = cal_same_link_pos(crosslink_file_0114_M10_fDR,
-                                             crosslink_file_0118_BM10_fDR,
-                                             bsa_fasta,
-                                             set=True,
-                                             simple_mode=True,
-                                             f2sf=True)[0]
+# repeat_list_01140118_M10 = cal_same_link_pos(crosslink_file_0114_M10_fDR,
+#                                              crosslink_file_0118_BM10_fDR,
+#                                              bsa_fasta,
+#                                              set=True,
+#                                              simple_mode=True,
+#                                              f2sf=True)[0]
 
-repeat_list_01140118_S30 = cal_same_link_pos(crosslink_file_0114_S30_fDR,
-                                             crosslink_file_0118_BS30_fDR,
-                                             bsa_fasta,
-                                             set=True,
-                                             simple_mode=True,
-                                             f2sf=True)[0]
+# repeat_list_01140118_S30 = cal_same_link_pos(crosslink_file_0114_S30_fDR,
+#                                              crosslink_file_0118_BS30_fDR,
+#                                              bsa_fasta,
+#                                              set=True,
+#                                              simple_mode=True,
+#                                              f2sf=True)[0]
 
-repeat_list_01140118_S10 = cal_same_link_pos(crosslink_file_0114_S10_fDR,
-                                             crosslink_file_0118_BS10_fDR,
-                                             bsa_fasta,
-                                             set=True,
-                                             simple_mode=True,
-                                             f2sf=True)[0]
+# repeat_list_01140118_S10 = cal_same_link_pos(crosslink_file_0114_S10_fDR,
+#                                              crosslink_file_0118_BS10_fDR,
+#                                              bsa_fasta,
+#                                              set=True,
+#                                              simple_mode=True,
+#                                              f2sf=True)[0]
 
-repeat_list_01140118_S5 = cal_same_link_pos(crosslink_file_0114_S5_fDR,
-                                            crosslink_file_0118_BS5_fDR,
-                                            bsa_fasta,
-                                            set=True,
-                                            simple_mode=True,
-                                            f2sf=True)[0]
+# repeat_list_01140118_S5 = cal_same_link_pos(crosslink_file_0114_S5_fDR,
+#                                             crosslink_file_0118_BS5_fDR,
+#                                             bsa_fasta,
+#                                             set=True,
+#                                             simple_mode=True,
+#                                             f2sf=True)[0]
 
-repeat_list_01140118_N = cal_same_link_pos(crosslink_file_0114_N_fDR,
-                                           crosslink_file_0118_B_fDR,
-                                           bsa_fasta,
-                                           set=True,
-                                           simple_mode=True,
-                                           f2sf=True)[0]
+# repeat_list_01140118_N = cal_same_link_pos(crosslink_file_0114_N_fDR,
+#                                            crosslink_file_0118_B_fDR,
+#                                            bsa_fasta,
+#                                            set=True,
+#                                            simple_mode=True,
+#                                            f2sf=True)[0]
 
-a = cal_repeat_list(repeat_list_01140118_M10,
-                    repeat_list_01140118_S30,
-                    simple_mode=True)[0]
-b = cal_repeat_list(repeat_list_01140118_S10,
-                    repeat_list_01140118_S5,
-                    simple_mode=True)[0]
+# a = cal_repeat_list(repeat_list_01140118_M10,
+#                     repeat_list_01140118_S30,
+#                     simple_mode=True)[0]
+# b = cal_repeat_list(repeat_list_01140118_S10,
+#                     repeat_list_01140118_S5,
+#                     simple_mode=True)[0]
 
-c = cal_repeat_list(a, b, simple_mode=True)[0]
+# c = cal_repeat_list(a, b, simple_mode=True)[0]
 
-report_animo_ratio(c, pos_form=True, fasta_file=bsa_fasta, tableform=True)
+# report_animo_ratio(c, pos_form=True, fasta_file=bsa_fasta, tableform=True)
 
-num = 0
-for i in c:
-    dis = pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
-                                            'G:/MSdata/bsa.pdb')
-    print(i, dis, bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
-    # cmd.distance(str(i[0]) + '-' + str(i[1]),
-    #              "(/bsa//A/" + str(i[0]) + "/CA)",
-    #              "( /bsa//A/" + str(i[1]) + "/CA)",
-    #              mode=0)
-    if dis >= 15:
-        num += 1
-print('Over 15 A:', num)
+# num = 0
+# for i in a:
+#     dis = pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
+#                                             'G:/MSdata/bsa.pdb')
+#     print(i, dis, bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
+#     # cmd.distance(str(i[0]) + '-' + str(i[1]),
+#     #              "(/bsa//A/" + str(i[0]) + "/CA)",
+#     #              "( /bsa//A/" + str(i[1]) + "/CA)",
+#     #              mode=0)
+#     if dis >= 15:
+#         num += 1
+# print('Over 15 A:', num)
 
 # Test 0118 Ub
 
@@ -232,3 +232,41 @@ print('Over 15 A:', num)
 #     if dis >= 15:
 #         num += 1
 # print('Over 15 A:', num)
+
+# Selection
+
+repeat_list_01140118_M10 = cal_same_link_pos(crosslink_file_0114_M10_fDR,
+                                             crosslink_file_0118_BM10_fDR,
+                                             bsa_fasta,
+                                             set=True,
+                                             simple_mode=True,
+                                             f2sf=True)[0]
+
+repeat_list_01140118_S30 = cal_same_link_pos(crosslink_file_0114_S30_fDR,
+                                             crosslink_file_0118_BS30_fDR,
+                                             bsa_fasta,
+                                             set=True,
+                                             simple_mode=True,
+                                             f2sf=True)[0]
+
+list_0118_M10 = cal_same_link_pos(crosslink_file_0118_BM10_fDR,
+                                  crosslink_file_0118_BM10_fDR,
+                                  bsa_fasta,
+                                  set=True,
+                                  simple_mode=True,
+                                  f2sf=True)[0]
+
+list_0118_S5 = cal_same_link_pos(crosslink_file_0118_BS5_fDR,
+                                 crosslink_file_0118_BS5_fDR,
+                                 bsa_fasta,
+                                 set=True,
+                                 simple_mode=True,
+                                 f2sf=True)[0]
+num = 0
+for i in repeat_list_01140118_M10:
+    dis = pdb_distance_analyze.cal_distance(int(i[0]), int(i[1]),
+                                            'G:/MSdata/bsa.pdb')
+    print(i, dis, bsa_fasta[int(i[0]) - 1], bsa_fasta[int(i[1]) - 1])
+    if dis >= 15:
+        num += 1
+print('Over 15 A:', num)
