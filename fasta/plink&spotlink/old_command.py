@@ -284,3 +284,1211 @@
 
 # analyze_distance_neighboorhood(E1_fasta,
 #                                "G:/MSdata/20220221tanglabprotein/E1.pdb")
+
+# 220805-BSA-modify-power
+
+# bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
+
+# # plink2crosslink(
+# #     "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/bsa_2022.03.26.filtered_cross-linked_spectra.csv",
+# #     "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/"
+# # )
+
+# spotlink_file_0322_B_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B_HCDFT_result_filtered.csv'
+# spotlink_file_0322_BO_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BO_HCDFT_result_filtered.csv'
+# spotlink_file_0322_BN_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BN_HCDFT_result_filtered.csv'
+# spotlink_file_0322_BU_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BU_HCDFT_result_filtered.csv'
+# spotlink_file_0322_B1_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B1_HCDFT_result_filtered.csv'
+# spotlink_file_0322_B5_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B5_HCDFT_result_filtered.csv'
+# spotlink_file_0322_B50_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B50_HCDFT_result_filtered.csv'
+# spotlink_file_0322_B500_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B500_HCDFT_result_filtered.csv'
+# spotlink_file_0322_B1000_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B1000_HCDFT_result_filtered.csv'
+
+# crosslink_file_0118_BM10_fDR = 'G:/MSdata/220118UBBSA/spotlink/WXZ_20220118_BM10_HCDFT_result_filtered.csv'
+
+# plink_0322_B_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B.csv"
+# plink_0322_BO_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BO.csv"
+# plink_0322_BU_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BU.csv"
+# plink_0322_BN_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BN.csv"
+# plink_0322_B1_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B1.csv"
+# plink_0322_B5_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B5.csv"
+# plink_0322_B50_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B50.csv"
+# plink_0322_B500_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B500.csv"
+# plink_0322_B1000_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B1000.csv"
+
+# B_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B_fDR,
+#                                            bsa_fasta)[0]
+# BO_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BO_fDR,
+#                                             bsa_fasta)[0]
+# BN_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BN_fDR,
+#                                             bsa_fasta)[0]
+# BU_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BU_fDR,
+#                                             bsa_fasta)[0]
+# B1_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B1_fDR,
+#                                             bsa_fasta)[0]
+# B5_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B5_fDR,
+#                                             bsa_fasta)[0]
+# B50_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B50_fDR,
+#                                              bsa_fasta)[0]
+# B500_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B500_fDR,
+#                                               bsa_fasta)[0]
+# B1000_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B1000_fDR,
+#                                                bsa_fasta)[0]
+# BM10_0118_s = spotlink_report_valid_link_sfDR(crosslink_file_0118_BM10_fDR,
+#                                               bsa_fasta,
+#                                               least_ssn=1,
+#                                               threshold=0.8)[0]
+
+# B_0322_p = plink_report_valid_link_sfDR(plink_0322_B_fDR, bsa_fasta)[0]
+# BO_0322_p = plink_report_valid_link_sfDR(plink_0322_BO_fDR, bsa_fasta)[0]
+# BU_0322_p = plink_report_valid_link_sfDR(plink_0322_BU_fDR, bsa_fasta)[0]
+# BN_0322_p = plink_report_valid_link_sfDR(plink_0322_BN_fDR, bsa_fasta)[0]
+# B1_0322_p = plink_report_valid_link_sfDR(plink_0322_B1_fDR, bsa_fasta)[0]
+# B5_0322_p = plink_report_valid_link_sfDR(plink_0322_B5_fDR, bsa_fasta)[0]
+# B50_0322_p = plink_report_valid_link_sfDR(plink_0322_B50_fDR, bsa_fasta)[0]
+# B500_0322_p = plink_report_valid_link_sfDR(plink_0322_B500_fDR, bsa_fasta)[0]
+# B1000_0322_p = plink_report_valid_link_sfDR(plink_0322_B1000_fDR, bsa_fasta)[0]
+# print("-------------")
+
+# B_repeat = cal_repeat_list(B_0322_p, B_0322_s)[0]
+# BO_repeat = cal_repeat_list(BO_0322_p, BO_0322_s)[0]
+# BU_repeat = cal_repeat_list(BU_0322_p, BU_0322_s)[0]
+# BN_repeat = cal_repeat_list(BN_0322_p, BN_0322_s)[0]
+# B1_repeat = cal_repeat_list(B1_0322_p, B1_0322_s)[0]
+# B5_repeat = cal_repeat_list(B5_0322_p, B5_0322_s)[0]
+# B50_repeat = cal_repeat_list(B50_0322_p, B50_0322_s)[0]
+# B500_repeat = cal_repeat_list(B500_0322_p, B500_0322_s)[0]
+# B1000_repeat = cal_repeat_list(B1000_0322_p, B1000_0322_s)[0]
+# # Contrast with standard
+# print("-------------")
+# print(len(BM10_0118_s))
+# B_repeat = cal_repeat_list(B_repeat, BM10_0118_s)[0]
+# B1_repeat = cal_repeat_list(B1_repeat, BM10_0118_s)[0]
+# BO_repeat = cal_repeat_list(BO_repeat, BM10_0118_s)[0]
+# B5_repeat = cal_repeat_list(B5_repeat, BM10_0118_s)[0]
+# B50_repeat = cal_repeat_list(B50_repeat, BM10_0118_s)[0]
+# B500_repeat = cal_repeat_list(B500_repeat, BM10_0118_s)[0]
+# B1000_repeat = cal_repeat_list(B1000_repeat, BM10_0118_s)[0]
+# print("-------------")
+
+# repeat_list_0322 = [
+#     B_repeat, B1_repeat, BO_repeat, B5_repeat, B50_repeat, B500_repeat,
+#     B1000_repeat
+# ]
+
+# list_0322_s = [
+#     B_0322_s, BO_0322_s, BN_0322_s, BU_0322_s, B1_0322_s, B5_0322_s,
+#     B50_0322_s, B500_0322_s, B1000_0322_s
+# ]
+
+# list_0322_p = [
+#     B_0322_p, BO_0322_p, BN_0322_p, BU_0322_p, B1_0322_p, B5_0322_p,
+#     B50_0322_p, B500_0322_p, B1000_0322_p
+# ]
+
+# # for i in list_0322_s:
+# #     cal_distance_pos_list(i[0:100], print_all=False)
+
+# for i in repeat_list_0322:
+#     report_animo_ratio(i,
+#                        pos_form=True,
+#                        fasta_file=bsa_fasta,
+#                        tableform=True,
+#                        ratio_output=True,
+#                        threshold=40)
+
+# ADK
+
+# adk_fasta = "MRIILLGAPGAGKGTQAQFIMEKYGIPQISTGDMLRAAVKSGSELGKQAKDIMDAGKLVTDELVIALVKERIAQEDCRNGFLLDGFPRTIPQADAMKEAGINVDYVLEFDVPDELIVDRIVGRRVHAPSGRVYHVKFNPPKVEGKDDVTGEELTTRKDDQEETVRKRLVEYHQMTAPLIGYYSKEAEAGNTKYAKVDGTKPVAEVRADLEKILG"
+# # plink2crosslink(
+# #     "G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/adk_2022.04.02.filtered_cross-linked_spectra.csv",
+# #     "G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/crosslink_spotlinkform/"
+# # )
+# plink_0329_ADK_fDR = "G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/crosslink_spotlinkform/WXZ_20220329_AdK.csv"
+# plink_0329_ADKC_fDR = "G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/crosslink_spotlinkform/WXZ_20220329_AdKC.csv"
+
+# spotlink_file_0329_ADK_fDR = 'G:/MSdata/220329ADK/adk/spotlink/WXZ_20220329_AdK_HCDFT_result_filtered.csv'
+# spotlink_file_0329_ADKC_fDR = 'G:/MSdata/220329ADK/adk/spotlink/WXZ_20220329_AdKC_HCDFT_result_filtered.csv'
+
+# ADK_0329_s = spotlink_report_valid_link_sfDR(spotlink_file_0329_ADK_fDR,
+#                                              adk_fasta)[0]
+# ADKC_0329_s = spotlink_report_valid_link_sfDR(spotlink_file_0329_ADKC_fDR,
+#                                               adk_fasta)[0]
+
+# ADK_0329_p = plink_report_valid_link_sfDR(plink_0329_ADK_fDR, adk_fasta)[0]
+# ADKC_0329_p = plink_report_valid_link_sfDR(plink_0329_ADKC_fDR, adk_fasta)[0]
+
+# ADK_repeat = cal_repeat_list(ADK_0329_s, ADK_0329_p)[0]
+# ADKC_repeat = cal_repeat_list(ADKC_0329_s, ADKC_0329_p)[0]
+
+# report_animo_ratio(ADK_repeat,
+#                    pos_form=True,
+#                    fasta_file=adk_fasta,
+#                    tableform=True)
+# report_animo_ratio(ADKC_repeat,
+#                    pos_form=True,
+#                    fasta_file=adk_fasta,
+#                    tableform=True)
+# calc_fasta(adk_fasta, table_form=True)
+
+# from pymol import cmd
+
+# for i in ADKC_repeat:
+#     dis = cal_distance(int(i[0]), int(i[1]), 'G:/MSdata/220329ADK/adk/adk.pdb')
+#     print(i, dis, adk_fasta[int(i[0]) - 1], adk_fasta[int(i[1]) - 1])
+#     cmd.distance(
+#         str(i[0]) + '-' + str(i[1]), "(/adk//A/" + str(i[0]) + "/CA)",
+#         "( /adk//A/" + str(i[1]) + "/CA)")
+
+# 220812
+    #BSA
+    print("*" * 40)
+    print("--BSA--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
+    ### file_dir
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_B_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_B5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_B25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_B125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_B625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_BF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_B.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_B5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_B25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_B125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_B625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_BF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta,
+                                                f2sf=False)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_p])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_p])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_p])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_p])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_p])
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+    B_0805_s_list = [
+        B_0805_s, B5_0805_s, B25_0805_s, B125_0805_s, B625_0805_s, BF_0805_s
+    ]
+
+    for i in B_repeat_list:
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=50)
+
+    # RSV_CA
+    print("*" * 40)
+    print("--RSV--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MASMTGGQQMGRGSEFMPVVIKTEGPAWTPLEPKLITRLADTVRTKGLRSPITMAEVEALMSSPLLPHDVTNLMRVILGPAPYALWMDAWGVQLQTVIAAATRDPRHPANGQGRGERTNLNRLKGLADGMVGNPQGQAALLRPGELVAITASALQAFREVARLAEPAGPWADIMQGPSESFVDFANRLIKAVEGSDLPPSARAPVIIDSFRQKSQPDIQQLIRTAPSTLTTPGEIIKYVLDRQKTAPLTDQGIAAAM"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_R_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_R5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_R25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_R125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_R625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_RF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_R.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_R5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_R25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_R125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_R625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_RF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+
+    for i in B_repeat_list:
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=12)
+
+    # E1
+    print("*" * 40)
+    print("--E1--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MTTVLYYLPASPPCRSVLLLAKMIGVELDLKVLNIMEGEQLKPDFVELNPQHCIPTMDDHGLVLWESRVILSYLVSAYGKDENLYPKDFRSRAIVDQRLHFDLGTLYQRVVDYYFPTIHLGAHLDQTKKAKLAEALGWFEAMLKQYQWSAANHFTIADIALCVTVSQIEAFQFDLHPYPRVRAWLLKCKDELEGHGYKEINETGAETLAGLFRSKLKQSDLVPRGSMSSSPLSKKRRVSGPDPKPGSNCSPAQSVLSEVPSVPTNGMAKNGSEADIDEGLYSRQLYVLGHEAMKRLQTSSVLVSGLRGLGVEIAKNIILGGVKAVTLHDQGTAQWADLSSQFYLREEDIGKNRAEVSQPRLAELNSYVPVTAYTGPLVEDFLSGFQVVVLTNTPLEDQLRVGEFCHNRGIKLVVADTRGLFGQLFCDFGEEMILTDSNGEQPLSAMVSMVTKDNPGVVTCLDEARHGFESGDFVSFSEVQGMVELNGNQPMEIKVLGPYTFSICDTSNFSDYIRGGIVSQVKVPKKISFKSLVASLAEPDFVVTDFAKFSRPAQLHIGFQALHQFCAQHGRPPRPRNEEDAAELVALAQAVNARALPAVQQNNLDEDLIRKLAYVAAGDLAPINAFIGGLAAQEVMKACSGKFMPIMQWLYFDALECLPEDKEVLTEDKCLQRQNRYDGQVAVFGSDLQEKLGKQKYFLVGAGAIGCELLKNFAMIGLGCGEGGEIIVTDMDTIEKSNLNRQFLFRPWDVTKLKSDTAAAAVRQMNPHIRVTSHQNRVGPDTERIYDDDFFQNLDGVANALDNVDARMYMDRRCVYYRKPLLESGTLGTKGNVQVVIPFLTESYSSSQDPPEKSIPICTLKNFPNAIEHTLQWARDEFEGLFKQPAENVNQYLTDPKFVERTLRLAGTQPLEVLEAVQRSLVLQRPQTWADCVTWACHHWHTQYSNNIRQLLHNFPPDQLTSSGAPFWSGPKRCPHPLTFDVNNPLHLDYVMAAANLFAQTYGLTGSQDRAAVATFLQSVQVPEFTPKSGVKIHVSDQELQSANASVDDSRLEELKATLPSPDKLPGFKMYPIDFEKDDDSNFHMDFIVAASNLRAENYDIPSADRHKSKLIAGKIIPAIATTTAAVVGLVCLELYKVVQGHRQLDSYKNGFLNLALPFFGFSEPLAAPRHQYYNQEWTLWDRFEVQGLQPNGEEMTLKQFLDYFKTEHKLEITMLSQGVSMLYSFFMPAAKLKERLDQPMTEIVSRVSKRKLGRHVRALVLELCCNDESGEDVEVPYVRYTIR"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_E_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_E5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_E25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_E125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_E625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_EF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_E.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_E5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_E25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_E125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_E625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_EF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+
+    for i in B_repeat_list:
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=15)
+
+    # ADK
+    print("*" * 40)
+    print("--ADK--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MRIILLGAPGAGKGTQAQFIMEKYGIPQISTGDMLRAAVKSGSELGKQAKDIMDAGKLVTDELVIALVKERIAQEDCRNGFLLDGFPRTIPQADAMKEAGINVDYVLEFDVPDELIVDRIVGRRVHAPSGRVYHVKFNPPKVEGKDDVTGEELTTRKDDQEETVRKRLVEYHQMTAPLIGYYSKEAEAGNTKYAKVDGTKPVAEVRADLEKILG"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_A_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_A5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_A25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_A125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_A625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_AF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_A.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_A5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_A25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_A125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_A625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_AF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+
+    for i in B_repeat_list:
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=10)
+
+# 220812-MOD
+    # plink2crosslink(
+    #     "G:/MSdata/22020802BARSN_modify_power/Plink/pLink_task_2022.08.05.16.12.59_NSP/reports/NSP5_2022.08.05.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/")
+
+    #BSA
+    print("*" * 40)
+    print("--BSA--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
+    ### file_dir
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_B_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_B5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_B25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_B125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_B625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_BF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_B.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_B5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_B25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_B125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_B625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_BF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta,
+                                                f2sf=False)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    # B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+    B_repeat = cal_multi_list([B_0805_s, B_0805_p])
+    B5_repeat = cal_multi_list([B5_0805_s, B5_0805_p])
+    B25_repeat = cal_multi_list([B25_0805_s, B25_0805_p])
+    B125_repeat = cal_multi_list([B125_0805_s, B125_0805_p])
+    B625_repeat = cal_multi_list([B625_0805_s, B625_0805_p])
+
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+    # BF_repeat = cal_multi_list([BF_0805_s, BF_0805_s])
+
+    # B_repeat = cal_multi_list([B_0805_p, B_0805_p])
+    # B5_repeat = cal_multi_list([B5_0805_p, B5_0805_p])
+    # B25_repeat = cal_multi_list([B25_0805_p, B25_0805_p])
+    # B125_repeat = cal_multi_list([B125_0805_p, B125_0805_p])
+    # B625_repeat = cal_multi_list([B625_0805_p, B625_0805_p])
+    # BF_repeat = cal_multi_list([BF_0805_p, BF_0805_p])
+
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+    B_0805_s_list = [
+        B_0805_s, B5_0805_s, B25_0805_s, B125_0805_s, B625_0805_s, BF_0805_s
+    ]
+
+    for i in B_repeat_list:
+        cal_distance_pos_list(i[0:25], print_all=True)
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=25)
+
+    # 220805-BSA-modify-power
+
+    bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
+
+    # plink2crosslink(
+    #     "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/bsa_2022.03.26.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/"
+    # )
+
+    spotlink_file_0322_B_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B_HCDFT_result_filtered.csv'
+    spotlink_file_0322_BO_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BO_HCDFT_result_filtered.csv'
+    spotlink_file_0322_BN_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BN_HCDFT_result_filtered.csv'
+    spotlink_file_0322_BU_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_BU_HCDFT_result_filtered.csv'
+    spotlink_file_0322_B1_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B1_HCDFT_result_filtered.csv'
+    spotlink_file_0322_B5_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B5_HCDFT_result_filtered.csv'
+    spotlink_file_0322_B50_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B50_HCDFT_result_filtered.csv'
+    spotlink_file_0322_B500_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B500_HCDFT_result_filtered.csv'
+    spotlink_file_0322_B1000_fDR = 'G:/MSdata/220321BSA_modify_power/SPOTLINK/JYD_20220322_B1000_HCDFT_result_filtered.csv'
+
+    crosslink_file_0118_BM10_fDR = 'G:/MSdata/220118UBBSA/spotlink/WXZ_20220118_BM10_HCDFT_result_filtered.csv'
+
+    plink_0322_B_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B.csv"
+    plink_0322_BO_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BO.csv"
+    plink_0322_BU_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BU.csv"
+    plink_0322_BN_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_BN.csv"
+    plink_0322_B1_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B1.csv"
+    plink_0322_B5_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B5.csv"
+    plink_0322_B50_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B50.csv"
+    plink_0322_B500_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B500.csv"
+    plink_0322_B1000_fDR = "G:/MSdata/220321BSA_modify_power/PLINK/pLink_task_2022.03.26.09.56.22/reports/crosslink_spotlinkform/JYD_20220322_B1000.csv"
+
+    B_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B_fDR,
+                                               bsa_fasta)[0]
+    BO_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BO_fDR,
+                                                bsa_fasta)[0]
+    BN_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BN_fDR,
+                                                bsa_fasta)[0]
+    BU_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_BU_fDR,
+                                                bsa_fasta)[0]
+    B1_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B1_fDR,
+                                                bsa_fasta)[0]
+    B5_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B5_fDR,
+                                                bsa_fasta)[0]
+    B50_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B50_fDR,
+                                                 bsa_fasta)[0]
+    B500_0322_s = spotlink_report_valid_link_sfDR(spotlink_file_0322_B500_fDR,
+                                                  bsa_fasta)[0]
+    B1000_0322_s = spotlink_report_valid_link_sfDR(
+        spotlink_file_0322_B1000_fDR, bsa_fasta)[0]
+    BM10_0118_s = spotlink_report_valid_link_sfDR(crosslink_file_0118_BM10_fDR,
+                                                  bsa_fasta,
+                                                  least_ssn=1,
+                                                  threshold=0.8)[0]
+
+    B_0322_p = plink_report_valid_link_sfDR(plink_0322_B_fDR, bsa_fasta)[0]
+    BO_0322_p = plink_report_valid_link_sfDR(plink_0322_BO_fDR, bsa_fasta)[0]
+    BU_0322_p = plink_report_valid_link_sfDR(plink_0322_BU_fDR, bsa_fasta)[0]
+    BN_0322_p = plink_report_valid_link_sfDR(plink_0322_BN_fDR, bsa_fasta)[0]
+    B1_0322_p = plink_report_valid_link_sfDR(plink_0322_B1_fDR, bsa_fasta)[0]
+    B5_0322_p = plink_report_valid_link_sfDR(plink_0322_B5_fDR, bsa_fasta)[0]
+    B50_0322_p = plink_report_valid_link_sfDR(plink_0322_B50_fDR, bsa_fasta)[0]
+    B500_0322_p = plink_report_valid_link_sfDR(plink_0322_B500_fDR,
+                                               bsa_fasta)[0]
+    B1000_0322_p = plink_report_valid_link_sfDR(plink_0322_B1000_fDR,
+                                                bsa_fasta)[0]
+    print("-------------")
+
+    B_repeat = cal_repeat_list(B_0322_p, B_0322_s)[0]
+    BO_repeat = cal_repeat_list(BO_0322_p, BO_0322_s)[0]
+    BU_repeat = cal_repeat_list(BU_0322_p, BU_0322_s)[0]
+    BN_repeat = cal_repeat_list(BN_0322_p, BN_0322_s)[0]
+    B1_repeat = cal_repeat_list(B1_0322_p, B1_0322_s)[0]
+    B5_repeat = cal_repeat_list(B5_0322_p, B5_0322_s)[0]
+    B50_repeat = cal_repeat_list(B50_0322_p, B50_0322_s)[0]
+    B500_repeat = cal_repeat_list(B500_0322_p, B500_0322_s)[0]
+    B1000_repeat = cal_repeat_list(B1000_0322_p, B1000_0322_s)[0]
+    # Contrast with standard
+    print("-------------")
+    # print(len(BM10_0118_s))
+    # B_repeat = cal_repeat_list(B_0322_s, BF_0805_s)[0]
+    # B1_repeat = cal_repeat_list(B1_0322_s, BF_0805_s)[0]
+    # BO_repeat = cal_repeat_list(BO_0322_s, BF_0805_s)[0]
+    # B5_repeat = cal_repeat_list(B5_0322_s, BF_0805_s)[0]
+    # B50_repeat = cal_repeat_list(B50_0322_s, BF_0805_s)[0]
+    # B500_repeat = cal_repeat_list(B500_0322_s, BF_0805_s)[0]
+    # B1000_repeat = cal_repeat_list(B1000_0322_s, BF_0805_s)[0]
+    # print("-------------")
+
+    repeat_list_0322 = [
+        B_repeat, B1_repeat, B5_repeat, B50_repeat, B500_repeat
+    ]
+
+    list_0322_s = [
+        B_0322_s, BO_0322_s, BN_0322_s, BU_0322_s, B1_0322_s, B5_0322_s,
+        B50_0322_s, B500_0322_s, B1000_0322_s
+    ]
+
+    list_0322_p = [
+        B_0322_p, BO_0322_p, BN_0322_p, BU_0322_p, B1_0322_p, B5_0322_p,
+        B50_0322_p, B500_0322_p, B1000_0322_p
+    ]
+
+    # for i in list_0322_s:
+    #     cal_distance_pos_list(i[0:100], print_all=False)
+
+    for i in repeat_list_0322:
+        # cal_distance_pos_list(i[0:20], print_all=False)
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=30)
+
+    # RSV_CA
+    print("*" * 40)
+    print("--RSV--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MASMTGGQQMGRGSEFMPVVIKTEGPAWTPLEPKLITRLADTVRTKGLRSPITMAEVEALMSSPLLPHDVTNLMRVILGPAPYALWMDAWGVQLQTVIAAATRDPRHPANGQGRGERTNLNRLKGLADGMVGNPQGQAALLRPGELVAITASALQAFREVARLAEPAGPWADIMQGPSESFVDFANRLIKAVEGSDLPPSARAPVIIDSFRQKSQPDIQQLIRTAPSTLTTPGEIIKYVLDRQKTAPLTDQGIAAAM"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_R_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_R5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_R25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_R125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_R625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_RF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_R.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_R5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_R25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_R125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_R625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_RF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    # repeat part
+
+    # B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+
+    B_repeat = cal_multi_list([B_0805_s, B_0805_p])
+    B5_repeat = cal_multi_list([B5_0805_s, B5_0805_p])
+    B25_repeat = cal_multi_list([B25_0805_s, B25_0805_p])
+    B125_repeat = cal_multi_list([B125_0805_s, B125_0805_p])
+    B625_repeat = cal_multi_list([B625_0805_s, B625_0805_p])
+
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+
+    for i in B_repeat_list:
+        # cal_distance_pos_list(i[0:8],
+        #                       fasta=bsa_fasta,
+        #                       pdb_file='G:/MSdata/pdb/rsv_ca.pdb',
+        #                       print_all=False)
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=6)
+
+    # E1
+    print("*" * 40)
+    print("--E1--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MTTVLYYLPASPPCRSVLLLAKMIGVELDLKVLNIMEGEQLKPDFVELNPQHCIPTMDDHGLVLWESRVILSYLVSAYGKDENLYPKDFRSRAIVDQRLHFDLGTLYQRVVDYYFPTIHLGAHLDQTKKAKLAEALGWFEAMLKQYQWSAANHFTIADIALCVTVSQIEAFQFDLHPYPRVRAWLLKCKDELEGHGYKEINETGAETLAGLFRSKLKQSDLVPRGSMSSSPLSKKRRVSGPDPKPGSNCSPAQSVLSEVPSVPTNGMAKNGSEADIDEGLYSRQLYVLGHEAMKRLQTSSVLVSGLRGLGVEIAKNIILGGVKAVTLHDQGTAQWADLSSQFYLREEDIGKNRAEVSQPRLAELNSYVPVTAYTGPLVEDFLSGFQVVVLTNTPLEDQLRVGEFCHNRGIKLVVADTRGLFGQLFCDFGEEMILTDSNGEQPLSAMVSMVTKDNPGVVTCLDEARHGFESGDFVSFSEVQGMVELNGNQPMEIKVLGPYTFSICDTSNFSDYIRGGIVSQVKVPKKISFKSLVASLAEPDFVVTDFAKFSRPAQLHIGFQALHQFCAQHGRPPRPRNEEDAAELVALAQAVNARALPAVQQNNLDEDLIRKLAYVAAGDLAPINAFIGGLAAQEVMKACSGKFMPIMQWLYFDALECLPEDKEVLTEDKCLQRQNRYDGQVAVFGSDLQEKLGKQKYFLVGAGAIGCELLKNFAMIGLGCGEGGEIIVTDMDTIEKSNLNRQFLFRPWDVTKLKSDTAAAAVRQMNPHIRVTSHQNRVGPDTERIYDDDFFQNLDGVANALDNVDARMYMDRRCVYYRKPLLESGTLGTKGNVQVVIPFLTESYSSSQDPPEKSIPICTLKNFPNAIEHTLQWARDEFEGLFKQPAENVNQYLTDPKFVERTLRLAGTQPLEVLEAVQRSLVLQRPQTWADCVTWACHHWHTQYSNNIRQLLHNFPPDQLTSSGAPFWSGPKRCPHPLTFDVNNPLHLDYVMAAANLFAQTYGLTGSQDRAAVATFLQSVQVPEFTPKSGVKIHVSDQELQSANASVDDSRLEELKATLPSPDKLPGFKMYPIDFEKDDDSNFHMDFIVAASNLRAENYDIPSADRHKSKLIAGKIIPAIATTTAAVVGLVCLELYKVVQGHRQLDSYKNGFLNLALPFFGFSEPLAAPRHQYYNQEWTLWDRFEVQGLQPNGEEMTLKQFLDYFKTEHKLEITMLSQGVSMLYSFFMPAAKLKERLDQPMTEIVSRVSKRKLGRHVRALVLELCCNDESGEDVEVPYVRYTIR"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_E_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_E5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_E25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_E125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_E625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_EF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_E.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_E5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_E25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_E125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_E625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_EF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    # B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+
+    B_repeat = cal_multi_list([B_0805_s, B_0805_p])
+    B5_repeat = cal_multi_list([B5_0805_s, B5_0805_p])
+    B25_repeat = cal_multi_list([B25_0805_s, B25_0805_p])
+    B125_repeat = cal_multi_list([B125_0805_s, B125_0805_p])
+    B625_repeat = cal_multi_list([B625_0805_s, B625_0805_p])
+
+    B_repeat_list = [B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat]
+
+    for i in B_repeat_list:
+        # cal_distance_pos_list(i[0:8],
+        #                       fasta=bsa_fasta,
+        #                       pdb_file='G:/MSdata/pdb/E1.pdb',
+        #                       print_all=False)
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=3)
+
+    # ADK
+    print("*" * 40)
+    print("--ADK--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Spotlink/"
+    plink_root_dir = "G:/MSdata/22020802BARSN_modify_power/Plink/Plink_CL_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MRIILLGAPGAGKGTQAQFIMEKYGIPQISTGDMLRAAVKSGSELGKQAKDIMDAGKLVTDELVIALVKERIAQEDCRNGFLLDGFPRTIPQADAMKEAGINVDYVLEFDVPDELIVDRIVGRRVHAPSGRVYHVKFNPPKVEGKDDVTGEELTTRKDDQEETVRKRLVEYHQMTAPLIGYYSKEAEAGNTKYAKVDGTKPVAEVRADLEKILG"
+    ### file_dir
+
+    spotlink_file_0805_B_fDR = spotlink_root_dir + 'JYD_20220727_A_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B5_fDR = spotlink_root_dir + 'JYD_20220727_A5_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B25_fDR = spotlink_root_dir + 'JYD_20220727_A25_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B125_fDR = spotlink_root_dir + 'JYD_20220727_A125_HCDFT_result_filtered.csv'
+    spotlink_file_0805_B625_fDR = spotlink_root_dir + 'JYD_20220727_A625_HCDFT_result_filtered.csv'
+    spotlink_file_0805_BF_fDR = spotlink_root_dir + 'JYD_20220727_AF_HCDFT_result_filtered.csv'
+    plink_file_0805_B_fDR = plink_root_dir + "JYD_20220727_A.csv"
+    plink_file_0805_B5_fDR = plink_root_dir + "JYD_20220727_A5.csv"
+    plink_file_0805_B25_fDR = plink_root_dir + "JYD_20220727_A25.csv"
+    plink_file_0805_B125_fDR = plink_root_dir + "JYD_20220727_A125.csv"
+    plink_file_0805_B625_fDR = plink_root_dir + "JYD_20220727_A625.csv"
+    plink_file_0805_BF_fDR = plink_root_dir + "JYD_20220727_AF.csv"
+    B_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B_fDR,
+                                               bsa_fasta)[0]
+    B5_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B5_fDR,
+                                                bsa_fasta)[0]
+    B25_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B25_fDR,
+                                                 bsa_fasta)[0]
+    B125_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B125_fDR,
+                                                  bsa_fasta)[0]
+    B625_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_B625_fDR,
+                                                  bsa_fasta)[0]
+    BF_0805_s = spotlink_report_valid_link_sfDR(spotlink_file_0805_BF_fDR,
+                                                bsa_fasta)[0]
+    B_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B_fDR,
+                                            bsa_fasta)[0]
+    B5_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B25_fDR,
+                                              bsa_fasta)[0]
+    B125_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B125_fDR,
+                                               bsa_fasta)[0]
+    B625_0805_p = plink_report_valid_link_sfDR(plink_file_0805_B625_fDR,
+                                               bsa_fasta)[0]
+    BF_0805_p = plink_report_valid_link_sfDR(plink_file_0805_BF_fDR,
+                                             bsa_fasta)[0]
+    ## repeat part
+
+    # B_repeat = cal_multi_list([B_0805_s, BF_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, BF_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, BF_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, BF_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, BF_0805_s])
+
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+
+    # B_repeat = cal_multi_list([B_0805_s, B_0805_s])
+    # B5_repeat = cal_multi_list([B5_0805_s, B5_0805_s])
+    # B25_repeat = cal_multi_list([B25_0805_s, B25_0805_s])
+    # B125_repeat = cal_multi_list([B125_0805_s, B125_0805_s])
+    # B625_repeat = cal_multi_list([B625_0805_s, B625_0805_s])
+
+    B_repeat = cal_multi_list([B_0805_s, B_0805_p])
+    B5_repeat = cal_multi_list([B5_0805_s, B5_0805_p])
+    B25_repeat = cal_multi_list([B25_0805_s, B25_0805_p])
+    B125_repeat = cal_multi_list([B125_0805_s, B125_0805_p])
+    B625_repeat = cal_multi_list([B625_0805_s, B625_0805_p])
+    BF_repeat = cal_multi_list([BF_0805_s, BF_0805_p])
+
+    B_repeat_list = [
+        B_repeat, B5_repeat, B25_repeat, B125_repeat, B625_repeat, BF_repeat
+    ]
+
+    for i in B_repeat_list:
+        # cal_distance_pos_list(i,
+        #                       fasta=bsa_fasta,
+        #                       pdb_file='G:/MSdata/pdb/adk.pdb',
+        #                       print_all=True)
+        report_animo_ratio(i,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=3)
+
+
+# 20220920
+     # plink2crosslink(
+    #     "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.35.11/reports/bsa_2022.09.15.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.35.11/reports/crosslink_spotlinkform/"
+    # )
+
+    print("*" * 40)
+    print("--BSA--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/220913BSABQXL/spotlink/"
+    plink_root_dir = "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.35.11/reports/crosslink_spotlinkform/"
+    ### fasta
+    bsa_fasta = "MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA"
+    ### file_dir
+    spotlink_file_0908_B0_fDR = spotlink_root_dir + 'JYD_20220908_B0_HCDFT_result_filtered.csv'
+    spotlink_file_0908_B1_fDR = spotlink_root_dir + 'JYD_20220908_B1_HCDFT_result_filtered.csv'
+    spotlink_file_0908_B5_fDR = spotlink_root_dir + 'JYD_20220908_B5_HCDFT_result_filtered.csv'
+    spotlink_file_0908_B25_fDR = spotlink_root_dir + 'JYD_20220908_B25_HCDFT_result_filtered.csv'
+    spotlink_file_0908_B100_fDR = spotlink_root_dir + 'JYD_20220908_B100_HCDFT_result_filtered.csv'
+    plink_file_0908_B0_fDR = plink_root_dir + "JYD_20220908_B0.csv"
+    plink_file_0908_B5_fDR = plink_root_dir + "JYD_20220908_B5.csv"
+    plink_file_0908_B25_fDR = plink_root_dir + "JYD_20220908_B25.csv"
+    plink_file_0908_B100_fDR = plink_root_dir + "JYD_20220908_B100.csv"
+    plink_file_0908_B1_fDR = plink_root_dir + "JYD_20220908_B1.csv"
+    B0_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B0_fDR,
+                                                bsa_fasta,
+                                                f2sf=False)[0]
+    B1_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B1_fDR,
+                                                bsa_fasta,
+                                                f2sf=False)[0]
+    B5_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B5_fDR,
+                                                bsa_fasta,
+                                                f2sf=False)[0]
+    B25_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B25_fDR,
+                                                 bsa_fasta,
+                                                 f2sf=False)[0]
+    B100_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B100_fDR,
+                                                  bsa_fasta,
+                                                  f2sf=False)[0]
+    # B0_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B0_fDR,
+    #                                             bsa_fasta,
+    #                                             f2sf=True)[0]
+    # B1_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B1_fDR,
+    #                                             bsa_fasta,
+    #                                             f2sf=True)[0]
+    # B5_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B5_fDR,
+    #                                             bsa_fasta,
+    #                                             f2sf=True)[0]
+    # B25_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B25_fDR,
+    #                                              bsa_fasta,
+    #                                              f2sf=True)[0]
+    # B100_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_B100_fDR,
+    #                                               bsa_fasta,
+    #                                               f2sf=True)[0]
+    B0_0908_p = plink_report_valid_link_sfDR(plink_file_0908_B0_fDR,
+                                             bsa_fasta)[0]
+    B1_0908_p = plink_report_valid_link_sfDR(plink_file_0908_B1_fDR,
+                                             bsa_fasta)[0]
+    B5_0908_p = plink_report_valid_link_sfDR(plink_file_0908_B5_fDR,
+                                             bsa_fasta)[0]
+    B25_0908_p = plink_report_valid_link_sfDR(plink_file_0908_B25_fDR,
+                                              bsa_fasta)[0]
+    B100_0908_p = plink_report_valid_link_sfDR(plink_file_0908_B100_fDR,
+                                               bsa_fasta)[0]
+    ## repeat part
+
+    B0_repeat = cal_multi_list([B0_0908_s, B0_0908_p])
+    B1_repeat = cal_multi_list([B1_0908_s, B1_0908_p])
+    B5_repeat = cal_multi_list([B5_0908_s, B5_0908_p])
+    B25_repeat = cal_multi_list([B25_0908_s, B25_0908_p])
+    B100_repeat = cal_multi_list([B100_0908_s, B100_0908_p])
+    # B0_repeat = cal_multi_list([B0_0908_s, B0_0908_s])
+    # B1_repeat = cal_multi_list([B1_0908_s, B1_0908_s])
+    # B5_repeat = cal_multi_list([B5_0908_s, B5_0908_s])
+    # B25_repeat = cal_multi_list([B25_0908_s, B25_0908_s])
+    # B100_repeat = cal_multi_list([B100_0908_s, B100_0908_s])
+
+    # B0_repeat = cal_multi_list([B0_0908_p, B0_0908_p])
+    # B1_repeat = cal_multi_list([B1_0908_p, B1_0908_p])
+    # B5_repeat = cal_multi_list([B5_0908_p, B5_0908_p])
+    # B25_repeat = cal_multi_list([B25_0908_p, B25_0908_p])
+    # B100_repeat = cal_multi_list([B100_0908_p, B100_0908_p])
+
+    B_repeat_list = [B0_repeat, B1_repeat, B5_repeat, B25_repeat, B100_repeat]
+    B0_0908_s_list = [B0_0908_s, B1_0908_s, B5_0908_s, B25_0908_s, B100_0908_s]
+
+    for i in B_repeat_list:
+        k = [
+            j for j in i
+            if bsa_fasta[int(j[0]) - 1] == "K" or bsa_fasta[int(j[1]) -
+                                                            1] == "K"
+        ]
+        cal_distance_pos_list(k[0:75],
+                              fasta=bsa_fasta,
+                              pdb_file='G:/MSdata/pdb/bsa.pdb',
+                              print_all=False)
+        report_animo_ratio(k,
+                           pos_form=True,
+                           fasta_file=bsa_fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=50)
+
+
+  # plink2crosslink(
+    #     "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.44.33/reports/conalbumin_2022.09.15.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.44.33/reports/crosslink_spotlinkform/"
+    # )
+
+    print("*" * 40)
+    print("--BQ--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/220913BSABQXL/spotlink/"
+    plink_root_dir = "G:/MSdata/220913BSABQXL/plink/pLink_task_2022.09.15.14.44.33/reports/crosslink_spotlinkform/"
+    ### fasta
+    fasta = "MKLILCTVLSLGIAAVCFAAPPKSVIRWCTISSPEEKKCNNLRDLTQQERISLTCVQKATYLDCIKAIANNEADAISLDGGQAFEAGLAPYKLKPIAAEVYEHTEGSTTSYYAVAVVKKGTEFTVNDLQGKTSCHTGLGRSAGWNIPIGTLLHRGAIEWEGIESGSVEQAVAKFFSASCVPGATIEQKLCRQCKGDPKTKCARNAPYSGYSGAFHCLKDGKGDVAFVKHTTVNENAPDQKDEYELLCLDGSRQPVDNYKTCNWARVAAHAVVARDDNKVEDIWSFLSKAQSDFGVDTKSDFHLFGPPGKKDPVLKDLLFKDSAIMLKRVPSLMDSQLYLGFEYYSAIQSMRKDQLTPSPRENRIQWCAVGKDEKSKCDRWSVVSNGDVECTVVDETKDCIIKIMKGEADAVALDGGLVYTAGVCGLVPVMAERYDDESQCSKTDERPASYFAVAVARKDSNVNWNNLKGKKSCHTAVGRTAGWVIPMGLIHNRTGTCNFDEYFSEGCAPGSPPNSRLCQLCQGSGGIPPEKCVASSHEKYFGYTGALRCLVEKGDVAFIQHSTVEENTGGKNKADWAKNLQMDDFELLCTDGRRANVMDYRECNLAEVPTHAVVVRPEKANKIRDLLERQEKRFGVNGSEKSKFMMFESQNKDLLFKDLTKCLFKVREGTTYKEFLGDKFYTVISSLKTCNPSDILQMCSFLEGK"
+    ### file_dir
+    spotlink_file_0908_BQ0_fDR = spotlink_root_dir + 'JYD_20220908_BQ0_HCDFT_result_filtered.csv'
+    spotlink_file_0908_BQ1_fDR = spotlink_root_dir + 'JYD_20220908_BQ1_HCDFT_result_filtered.csv'
+    spotlink_file_0908_BQ5_fDR = spotlink_root_dir + 'JYD_20220908_BQ5_HCDFT_result_filtered.csv'
+    spotlink_file_0908_BQ25_fDR = spotlink_root_dir + 'JYD_20220908_BQ25_HCDFT_result_filtered.csv'
+    spotlink_file_0908_BQ100_fDR = spotlink_root_dir + 'JYD_20220908_BQ100_HCDFT_result_filtered.csv'
+    plink_file_0908_BQ0_fDR = plink_root_dir + "JYD_20220908_BQ0.csv"
+    plink_file_0908_BQ5_fDR = plink_root_dir + "JYD_20220908_BQ5.csv"
+    plink_file_0908_BQ25_fDR = plink_root_dir + "JYD_20220908_BQ25.csv"
+    plink_file_0908_BQ100_fDR = plink_root_dir + "JYD_20220908_BQ100.csv"
+    plink_file_0908_BQ1_fDR = plink_root_dir + "JYD_20220908_BQ1.csv"
+    BQ0_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ0_fDR,
+                                                 fasta,
+                                                 f2sf=False)[0]
+    BQ1_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ1_fDR,
+                                                 fasta,
+                                                 f2sf=False)[0]
+    BQ5_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ5_fDR,
+                                                 fasta,
+                                                 f2sf=False)[0]
+    BQ25_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ25_fDR,
+                                                  fasta,
+                                                  f2sf=False)[0]
+    BQ100_0908_s = spotlink_report_valid_link_sfDR(
+        spotlink_file_0908_BQ100_fDR, fasta, f2sf=False)[0]
+    # BQ0_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ0_fDR,
+    #                                              fasta,
+    #                                              f2sf=True)[0]
+    # BQ1_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ1_fDR,
+    #                                              fasta,
+    #                                              f2sf=True)[0]
+    # BQ5_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ5_fDR,
+    #                                              fasta,
+    #                                              f2sf=True)[0]
+    # BQ25_0908_s = spotlink_report_valid_link_sfDR(spotlink_file_0908_BQ25_fDR,
+    #                                               fasta,
+    #                                               f2sf=True)[0]
+    # BQ100_0908_s = spotlink_report_valid_link_sfDR(
+    #     spotlink_file_0908_BQ100_fDR, fasta, f2sf=True)[0]
+    BQ0_0908_p = plink_report_valid_link_sfDR(plink_file_0908_BQ0_fDR,
+                                              fasta)[0]
+    BQ1_0908_p = plink_report_valid_link_sfDR(plink_file_0908_BQ1_fDR,
+                                              fasta)[0]
+    BQ5_0908_p = plink_report_valid_link_sfDR(plink_file_0908_BQ5_fDR,
+                                              fasta)[0]
+    BQ25_0908_p = plink_report_valid_link_sfDR(plink_file_0908_BQ25_fDR,
+                                               fasta)[0]
+    BQ100_0908_p = plink_report_valid_link_sfDR(plink_file_0908_BQ100_fDR,
+                                                fasta)[0]
+    ## repeat part
+
+    BQ0_repeat = cal_multi_list([BQ0_0908_s, BQ0_0908_p])
+    BQ1_repeat = cal_multi_list([BQ1_0908_s, BQ1_0908_p])
+    BQ5_repeat = cal_multi_list([BQ5_0908_s, BQ5_0908_p])
+    BQ25_repeat = cal_multi_list([BQ25_0908_s, BQ25_0908_p])
+    BQ100_repeat = cal_multi_list([BQ100_0908_s, BQ100_0908_p])
+    # BQ0_repeat = cal_multi_list([BQ0_0908_s, BQ0_0908_s])
+    # BQ1_repeat = cal_multi_list([BQ1_0908_s, BQ1_0908_s])
+    # BQ5_repeat = cal_multi_list([BQ5_0908_s, BQ5_0908_s])
+    # BQ25_repeat = cal_multi_list([BQ25_0908_s, BQ25_0908_s])
+    # BQ100_repeat = cal_multi_list([BQ100_0908_s, BQ100_0908_s])
+
+    # BQ0_repeat = cal_multi_list([BQ0_0908_p, BQ0_0908_p])
+    # BQ1_repeat = cal_multi_list([BQ1_0908_p, BQ1_0908_p])
+    # BQ5_repeat = cal_multi_list([BQ5_0908_p, BQ5_0908_p])
+    # BQ25_repeat = cal_multi_list([BQ25_0908_p, BQ25_0908_p])
+    # BQ100_repeat = cal_multi_list([BQ100_0908_p, BQ100_0908_p])
+
+    BQ_repeat_list = [
+        BQ0_repeat, BQ1_repeat, BQ5_repeat, BQ25_repeat, BQ100_repeat
+    ]
+    BQ0_0908_s_list = [
+        BQ0_0908_s, BQ1_0908_s, BQ5_0908_s, BQ25_0908_s, BQ100_0908_s
+    ]
+
+    for i in BQ_repeat_list:
+        k = [
+            j for j in i
+            if fasta[int(j[0]) - 1] == "K" or fasta[int(j[1]) - 1] == "K"
+        ]
+        # cal_distance_pos_list(k[0:40],
+        #                       fasta=fasta,
+        #                       pdb_file='G:/MSdata/pdb/conalbumin.pdb',
+        #                       print_all=False)
+        report_animo_ratio(k,
+                           pos_form=True,
+                           fasta_file=fasta,
+                           tableform=True,
+                           ratio_output=False,
+                           threshold=40)
+
+  # plink2crosslink(
+    #     "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/HSA_2022.09.29.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/crosslink_spotlinkform/"
+    # )
+
+    print("*" * 40)
+    print("--HSA--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/220929HSAEGGMILK/spotlink/"
+    plink_root_dir = "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/crosslink_spotlinkform/"
+    ### fasta
+    fasta = "MKWVTFISLLFLFSSAYSRGVFRRDAHKSEVAHRFKDLGEENFKALVLIAFAQYLQQCPFEDHVKLVNEVTEFAKTCVADESAENCDKSLHTLFGDKLCTVATLRETYGEMADCCAKQEPERNECFLQHKDDNPNLPRLVRPEVDVMCTAFHDNEETFLKKYLYEIARRHPYFYAPELLFFAKRYKAAFTECCQAADKAACLLPKLDELRDEGKASSAKQRLKCASLQKFGERAFKAWAVARLSQRFPKAEFAEVSKLVTDLTKVHTECCHGDLLECADDRADLAKYICENQDSISSKLKECCEKPLLEKSHCIAEVENDEMPADLPSLAADFVESKDVCKNYAEAKDVFLGMFLYEYARRHPDYSVVLLLRLAKTYETTLEKCCAAADPHECYAKVFDEFKPLVEEPQNLIKQNCELFEQLGEYKFQNALLVRYTKKVPQVSTPTLVEVSRNLGKVGSKCCKHPEAKRMPCAEDYLSVVLNQLCVLHEKTPVSDRVTKCCTESLVNRRPCFSALEVDETYVPKEFNAETFTFHADICTLSEKERQIKKQTALVELVKHKPKATKEQLKAVMDDFAAFVEKCCKADDKETCFAEEGKKLVAASQAALGL"
+    ### file_dir
+    spotlink_file_0923_H0_fDR = spotlink_root_dir + 'JYD_20220923_H0_HCDFT_result_filtered.csv'
+    spotlink_file_0923_H1_fDR = spotlink_root_dir + 'JYD_20220923_H1_HCDFT_result_filtered.csv'
+    spotlink_file_0923_H5_fDR = spotlink_root_dir + 'JYD_20220923_H5_HCDFT_result_filtered.csv'
+    spotlink_file_0923_H25_fDR = spotlink_root_dir + 'JYD_20220923_H25_HCDFT_result_filtered.csv'
+    spotlink_file_0923_H100_fDR = spotlink_root_dir + 'JYD_20220923_H100_HCDFT_result_filtered.csv'
+    plink_file_0923_H0_fDR = plink_root_dir + "JYD_20220923_H0.csv"
+    plink_file_0923_H5_fDR = plink_root_dir + "JYD_20220923_H5.csv"
+    plink_file_0923_H25_fDR = plink_root_dir + "JYD_20220923_H25.csv"
+    plink_file_0923_H100_fDR = plink_root_dir + "JYD_20220923_H100.csv"
+    plink_file_0923_H1_fDR = plink_root_dir + "JYD_20220923_H1.csv"
+    H0_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H0_fDR,
+                                                fasta,
+                                                f2sf=False)[0]
+    H1_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H1_fDR,
+                                                fasta,
+                                                f2sf=False)[0]
+    H5_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H5_fDR,
+                                                fasta,
+                                                f2sf=False)[0]
+    H25_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H25_fDR,
+                                                 fasta,
+                                                 f2sf=False)[0]
+    H100_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H100_fDR,
+                                                  fasta,
+                                                  f2sf=False)[0]
+    # H0_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H0_fDR,
+    #                                             fasta,
+    #                                             f2sf=True)[0]
+    # H1_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H1_fDR,
+    #                                             fasta,
+    #                                             f2sf=True)[0]
+    # H5_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H5_fDR,
+    #                                             fasta,
+    #                                             f2sf=True)[0]
+    # H25_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H25_fDR,
+    #                                              fasta,
+    #                                              f2sf=True)[0]
+    # H100_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H100_fDR,
+    #                                               fasta,
+    #                                               f2sf=True)[0]
+    H0_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H0_fDR, fasta)[0]
+    H1_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H1_fDR, fasta)[0]
+    H5_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H5_fDR, fasta)[0]
+    H25_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H25_fDR,
+                                              fasta)[0]
+    H100_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H100_fDR,
+                                               fasta)[0]
+    ## repeat part
+
+    H0_repeat = cal_multi_list([H0_0923_s, H0_0923_p])
+    H1_repeat = cal_multi_list([H1_0923_s, H1_0923_p])
+    H5_repeat = cal_multi_list([H5_0923_s, H5_0923_p])
+    H25_repeat = cal_multi_list([H25_0923_s, H25_0923_p])
+    H100_repeat = cal_multi_list([H100_0923_s, H100_0923_p])
+    # H0_repeat = cal_multi_list([H0_0923_s, H0_0923_s])
+    # H1_repeat = cal_multi_list([H1_0923_s, H1_0923_s])
+    # H5_repeat = cal_multi_list([H5_0923_s, H5_0923_s])
+    # H25_repeat = cal_multi_list([H25_0923_s, H25_0923_s])
+    # H100_repeat = cal_multi_list([H100_0923_s, H100_0923_s])
+
+    # H0_repeat = cal_multi_list([H0_0923_p, H0_0923_p])
+    # H1_repeat = cal_multi_list([H1_0923_p, H1_0923_p])
+    # H5_repeat = cal_multi_list([H5_0923_p, H5_0923_p])
+    # H25_repeat = cal_multi_list([H25_0923_p, H25_0923_p])
+    # H100_repeat = cal_multi_list([H100_0923_p, H100_0923_p])
+
+    H_repeat_list = [H0_repeat, H1_repeat, H5_repeat, H25_repeat, H100_repeat]
+    H0_0923_s_list = [H0_0923_s, H1_0923_s, H5_0923_s, H25_0923_s, H100_0923_s]
+
+    for i in H_repeat_list:
+        k = [
+            j for j in i
+            if fasta[int(j[0]) - 1] == "K" or fasta[int(j[1]) - 1] == "K"
+        ]
+        cal_distance_pos_list(k[0:75],
+                              fasta=fasta,
+                              pdb_file='G:/MSdata/pdb/HSA.pdb',
+                              print_all=False)
+        report_animo_ratio(k,
+                           pos_form=True,
+                           fasta_file=fasta,
+                           tableform=True,
+                           ratio_output=True,
+                           threshold=75)
