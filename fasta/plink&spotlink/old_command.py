@@ -2701,3 +2701,208 @@
                            tableform=True,
                            ratio_output=False,
                            threshold=600)
+
+# 1103
+  # plink2crosslink(
+    #     "G:/MSdata/221027ETF/Trans/reports/trfe_human_con_2022.10.29.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/221027ETF/Trans/reports/crosslink_spotlinkform/")
+    print("*" * 40)
+    print("--Trans--" * 5)
+    print("*" * 40)
+    ## define part
+    spotlink_root_dir = "G:/MSdata/220929HSAEGGMILK/spotlink/"
+    plink_root_dir = "G:/MSdata/221027ETF/Trans/reports/crosslink_spotlinkform/"
+    ### fasta
+    trfe_human_fasta = "MRLAVGALLVCAVLGLCLAVPDKTVRWCAVSEHEATKCQSFRDHMKSVIPSDGPSVACVKKASYLDCIRAIAANEADAVTLDAGLVYDAYLAPNNLKPVVAEFYGSKEDPQTFYYAVAVVKKDSGFQMNQLRGKKSCHTGLGRSAGWNIPIGLLYCDLPEPRKPLEKAVANFFSGSCAPCADGTDFPQLCQLCPGCGCSTLNQYFGYSGAFKCLKDGAGDVAFVKHSTIFENLANKADRDQYELLCLDNTRKPVDEYKDCHLAQVPSHTVVARSMGGKEDLIWELLNQAQEHFGKDKSKEFQLFSSPHGKDLLFKDSAHGFLKVPPRMDAKMYLGYEYVTAIRNLREGTCPEAPTDECKPVKWCALSHHERLKCDEWSVNSVGKIECVSAETTEDCIAKIMNGEADAMSLDGGFVYIAGKCGLVPVLAENYNKSDNCEDTPEAGYFAIAVVKKSASDLTWDNLKGKKSCHTAVGRTAGWNIPMGLLYNKINHCRFDEFFSEGCAPGSKKDSSLCKLCMGSGLNLCEPNNKEGYYGYTGAFRCLVEKGDVAFVKHQTVPQNTGGKNPDPWAKNLNEKDYELLCLDGTRKPVEEYANCHLARAPNHAVVTRKDKEACVHKILRQQQHLFGSNVTDCSGNFCLFRSETKDLLFRDDTVCLAKLHDRNTYEKYLGEEYVKAVGNLRKCSTSSLLEACTFRRP"
+    ### file_dir
+    spotlink_file_1025_Trans0_fDR = spotlink_root_dir + 'JYD_20221025_Trans0_HCDFT_result_filtered.csv'
+    spotlink_file_1025_Trans1_fDR = spotlink_root_dir + 'JYD_20221025_Trans1_HCDFT_result_filtered.csv'
+    spotlink_file_1025_Trans5_fDR = spotlink_root_dir + 'JYD_20221025_Trans5_HCDFT_result_filtered.csv'
+    spotlink_file_1025_Trans25_fDR = spotlink_root_dir + 'JYD_20221025_Trans25_HCDFT_result_filtered.csv'
+    spotlink_file_1025_Trans100_fDR = spotlink_root_dir + 'JYD_20221025_Trans100_HCDFT_result_filtered.csv'
+    plink_file_1025_Trans0_fDR = plink_root_dir + "JYD_20221025_Trans0.csv"
+    plink_file_1025_Trans5_fDR = plink_root_dir + "JYD_20221025_Trans5.csv"
+    plink_file_1025_Trans25_fDR = plink_root_dir + "JYD_20221025_Trans25.csv"
+    plink_file_1025_Trans100_fDR = plink_root_dir + "JYD_20221025_Trans100.csv"
+    plink_file_1025_Trans1_fDR = plink_root_dir + "JYD_20221025_Trans1.csv"
+    # Trans0_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans0_fDR,
+    #                                             trfe_human_fasta,
+    #                                             f2sf=False)[0]
+    # Trans1_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans1_fDR,
+    #                                             trfe_human_fasta,
+    #                                             f2sf=False)[0]
+    # Trans5_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans5_fDR,
+    #                                             trfe_human_fasta,
+    #                                             f2sf=False)[0]
+    # Trans25_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans25_fDR,
+    #                                              trfe_human_fasta,
+    #                                              f2sf=False)[0]
+    # Trans100_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans100_fDR,
+    #                                               trfe_human_fasta,
+    #                                               f2sf=False)[0]
+    # Trans0_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans0_fDR,
+    #                                              trfe_human_fasta,
+    #                                              f2sf=True)[0]
+    # Trans1_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans1_fDR,
+    #                                              trfe_human_fasta,
+    #                                              f2sf=True)[0]
+    # Trans5_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans5_fDR,
+    #                                              trfe_human_fasta,
+    #                                              f2sf=True)[0]
+    # Trans25_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans25_fDR,
+    #                                               trfe_human_fasta,
+    #                                               f2sf=True)[0]
+    # Trans100_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Trans100_fDR,
+    #                                                trfe_human_fasta,
+    #                                                f2sf=True)[0]
+    Trans0_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Trans0_fDR,
+                                                 trfe_human_fasta)[0]
+    Trans1_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Trans1_fDR,
+                                                 trfe_human_fasta)[0]
+    Trans5_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Trans5_fDR,
+                                                 trfe_human_fasta)[0]
+    Trans25_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Trans25_fDR,
+                                                  trfe_human_fasta)[0]
+    Trans100_1025_p = plink_report_valid_link_sfDR(
+        plink_file_1025_Trans100_fDR, trfe_human_fasta)[0]
+
+    # Trans0_repeat = cal_multi_list([Trans0_1025_s, Trans0_1025_p])
+    # Trans1_repeat = cal_multi_list([Trans1_1025_s, Trans1_1025_p])
+    # Trans5_repeat = cal_multi_list([Trans5_1025_s, Trans5_1025_p])
+    # Trans25_repeat = cal_multi_list([Trans25_1025_s, Trans25_1025_p])
+    # Trans100_repeat = cal_multi_list([Trans100_1025_s, Trans100_1025_p])
+    # Trans0_repeat = cal_multi_list([Trans0_1025_s, Trans0_1025_s])
+    # Trans1_repeat = cal_multi_list([Trans1_1025_s, Trans1_1025_s])
+    # Trans5_repeat = cal_multi_list([Trans5_1025_s, Trans5_1025_s])
+    # Trans25_repeat = cal_multi_list([Trans25_1025_s, Trans25_1025_s])
+    # Trans100_repeat = cal_multi_list([Trans100_1025_s, Trans100_1025_s])
+    Trans0_repeat = cal_multi_list([Trans0_1025_p, Trans0_1025_p])
+    Trans1_repeat = cal_multi_list([Trans1_1025_p, Trans1_1025_p])
+    Trans5_repeat = cal_multi_list([Trans5_1025_p, Trans5_1025_p])
+    Trans25_repeat = cal_multi_list([Trans25_1025_p, Trans25_1025_p])
+    Trans100_repeat = cal_multi_list([Trans100_1025_p, Trans100_1025_p])
+
+    Trans_repeat_list = [
+        Trans0_repeat, Trans1_repeat, Trans5_repeat, Trans25_repeat,
+        Trans100_repeat
+    ]
+
+    for i in Trans_repeat_list:
+        k = [
+            j for j in i
+            if mod_fasta_head(trfe_human_fasta)[int(j[0]) - 1] == "K"
+            or mod_fasta_head(trfe_human_fasta)[int(j[1]) - 1] == "K"
+        ]
+        # cal_distance_pos_list(k,
+        #                       fasta=trfe_human_fasta,
+        #                       pdb_file='G:/MSdata/pdb/alb.pdb',
+        #                       threshold=600,
+        #                       print_all=False)
+        print(k)
+        report_animo_ratio(k,
+                           pos_form=True,
+                           fasta_file=mod_fasta_head(trfe_human_fasta),
+                           tableform=True,
+                           ratio_output=False,
+                           threshold=600)
+
+    # # plink2crosslink(
+    # #     "G:/MSdata/221027ETF/ALB/reports/alb_con_2022.10.29.filtered_cross-linked_spectra.csv",
+    # #     "G:/MSdata/221027ETF/ALB/reports/crosslink_spotlinkform/")
+    # print("*" * 40)
+    # print("--ALB--" * 5)
+    # print("*" * 40)
+    # ## define part
+    # spotlink_root_dir = "G:/MSdata/220929HSAEGGMILK/spotlink/"
+    # plink_root_dir = "G:/MSdata/221027ETF/ALB/reports/crosslink_spotlinkform/"
+    # ### fasta
+    # alb_fasta = "MKWVTLISFIFLFSSATSRNLQRFARDAEHKSEIAHRYNDLKEETFKAVAMITFAQYLQRCSYEGLSKLVKDVVDLAQKCVANEDAPECSKPLPSIILDEICQVEKLRDSYGAMADCCSKADPERNECFLSFKVSQPDFVQPYQRPASDVICQEYQDNRVSFLGHFIYSVARRHPFLYAPAILSFAVDFEHALQSCCKESDVGACLDTKEIVMREKAKGVSVKQQYFCGILKQFGDRVFQARQLIYLSQKYPKAPFSEVSKFVHDSIGVHKECCEGDMVECMDDMARMMSNLCSQQDVFSGKIKDCCEKPIVERSQCIMEAEFDEKPADLPSLVEKYIEDKEVCKSFEAGHDAFMAEFVYEYSRRHPEFSIQLIMRIAKGYESLLEKCCKTDNPAECYANAQEQLNQHIKETQDVVKTNCDLLHDHGEADFLKSILIRYTKKMPQVPTDLLLETGKKMTTIGTKCCQLGEDRRMACSEGYLSIVIHDTCRKQETTPINDNVSQCCSQLYANRRPCFTAMGVDTKYVPPPFNPDMFSFDEKLCSAPAEEREVGQMKLLINLIKRKPQMTEEQIKTIADGFTAMVDKCCKQSDINTCFGEEGANLIVQSRATLGIGA"
+    # ### file_dir
+    # spotlink_file_1025_Egg0_fDR = spotlink_root_dir + 'JYD_20221025_Egg0_HCDFT_result_filtered.csv'
+    # spotlink_file_1025_Egg1_fDR = spotlink_root_dir + 'JYD_20221025_Egg1_HCDFT_result_filtered.csv'
+    # spotlink_file_1025_Egg5_fDR = spotlink_root_dir + 'JYD_20221025_Egg5_HCDFT_result_filtered.csv'
+    # spotlink_file_1025_Egg25_fDR = spotlink_root_dir + 'JYD_20221025_Egg25_HCDFT_result_filtered.csv'
+    # spotlink_file_1025_Egg100_fDR = spotlink_root_dir + 'JYD_20221025_Egg100_HCDFT_result_filtered.csv'
+    # plink_file_1025_Egg0_fDR = plink_root_dir + "JYD_20221025_Egg0.csv"
+    # plink_file_1025_Egg5_fDR = plink_root_dir + "JYD_20221025_Egg5.csv"
+    # plink_file_1025_Egg25_fDR = plink_root_dir + "JYD_20221025_Egg25.csv"
+    # plink_file_1025_Egg100_fDR = plink_root_dir + "JYD_20221025_Egg100.csv"
+    # plink_file_1025_Egg1_fDR = plink_root_dir + "JYD_20221025_Egg1.csv"
+    # # Egg0_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg0_fDR,
+    # #                                             alb_fasta,
+    # #                                             f2sf=False)[0]
+    # # Egg1_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg1_fDR,
+    # #                                             alb_fasta,
+    # #                                             f2sf=False)[0]
+    # # Egg5_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg5_fDR,
+    # #                                             alb_fasta,
+    # #                                             f2sf=False)[0]
+    # # Egg25_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg25_fDR,
+    # #                                              alb_fasta,
+    # #                                              f2sf=False)[0]
+    # # Egg100_1025_s = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg100_fDR,
+    # #                                               alb_fasta,
+    # #                                               f2sf=False)[0]
+    # # Egg0_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg0_fDR,
+    # #                                              alb_fasta,
+    # #                                              f2sf=True)[0]
+    # # Egg1_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg1_fDR,
+    # #                                              alb_fasta,
+    # #                                              f2sf=True)[0]
+    # # Egg5_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg5_fDR,
+    # #                                              alb_fasta,
+    # #                                              f2sf=True)[0]
+    # # Egg25_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg25_fDR,
+    # #                                               alb_fasta,
+    # #                                               f2sf=True)[0]
+    # # Egg100_1025_sf = spotlink_report_valid_link_sfDR(spotlink_file_1025_Egg100_fDR,
+    # #                                                alb_fasta,
+    # #                                                f2sf=True)[0]
+    # Egg0_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Egg0_fDR,
+    #                                            alb_fasta)[0]
+    # Egg1_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Egg1_fDR,
+    #                                            alb_fasta)[0]
+    # Egg5_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Egg5_fDR,
+    #                                            alb_fasta)[0]
+    # Egg25_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Egg25_fDR,
+    #                                             alb_fasta)[0]
+    # Egg100_1025_p = plink_report_valid_link_sfDR(plink_file_1025_Egg100_fDR,
+    #                                              alb_fasta)[0]
+
+    # # Egg0_repeat = cal_multi_list([Egg0_1025_s, Egg0_1025_p])
+    # # Egg1_repeat = cal_multi_list([Egg1_1025_s, Egg1_1025_p])
+    # # Egg5_repeat = cal_multi_list([Egg5_1025_s, Egg5_1025_p])
+    # # Egg25_repeat = cal_multi_list([Egg25_1025_s, Egg25_1025_p])
+    # # Egg100_repeat = cal_multi_list([Egg100_1025_s, Egg100_1025_p])
+    # # Egg0_repeat = cal_multi_list([Egg0_1025_s, Egg0_1025_s])
+    # # Egg1_repeat = cal_multi_list([Egg1_1025_s, Egg1_1025_s])
+    # # Egg5_repeat = cal_multi_list([Egg5_1025_s, Egg5_1025_s])
+    # # Egg25_repeat = cal_multi_list([Egg25_1025_s, Egg25_1025_s])
+    # # Egg100_repeat = cal_multi_list([Egg100_1025_s, Egg100_1025_s])
+    # Egg0_repeat = cal_multi_list([Egg0_1025_p, Egg0_1025_p])
+    # Egg1_repeat = cal_multi_list([Egg1_1025_p, Egg1_1025_p])
+    # Egg5_repeat = cal_multi_list([Egg5_1025_p, Egg5_1025_p])
+    # Egg25_repeat = cal_multi_list([Egg25_1025_p, Egg25_1025_p])
+    # Egg100_repeat = cal_multi_list([Egg100_1025_p, Egg100_1025_p])
+
+    # Egg_repeat_list = [
+    #     Egg0_repeat, Egg1_repeat, Egg5_repeat, Egg25_repeat, Egg100_repeat
+    # ]
+
+    # for i in Egg_repeat_list:
+    #     k = [
+    #         j for j in i
+    #         if alb_fasta[int(j[0]) - 1] == "K" or alb_fasta[int(j[1]) -
+    #                                                         1] == "K"
+    #     ]
+    #     cal_distance_pos_list(k,
+    #                           fasta=alb_fasta,
+    #                           pdb_file='G:/MSdata/pdb/alb.pdb',
+    #                           threshold=600,
+    #                           print_all=False)
+    #     report_animo_ratio(k,
+    #                        pos_form=True,
+    #                        fasta_file=alb_fasta,
+    #                        tableform=True,
+    #                        ratio_output=False,
+    #                        threshold=600)
