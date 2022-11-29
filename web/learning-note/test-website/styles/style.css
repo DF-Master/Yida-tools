@@ -17,3 +17,6 @@ img {
 	border: 5px solid black;
 	margin: 0 auto;
 }
+p::before {
+	content: '\2003\2003';
+}
