@@ -16,6 +16,7 @@ def chat(msg):
 
 @server.route('/chat', methods=['post'])
 def chatapi():
+    print('****************************************')
     requestJson = request.get_data()
     if requestJson is None or requestJson == "" or requestJson == {}:
         resu = {'code': 1, 'msg': '请求内容不能为空'}
