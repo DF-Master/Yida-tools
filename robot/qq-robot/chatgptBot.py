@@ -22,17 +22,18 @@ def chatapi():
     if requestJson is None or requestJson == "" or requestJson == {}:
         resu = {'code': 1, 'msg': '请求内容不能为空'}
         return json.dumps(resu, ensure_ascii=False)
-    data = json.loads(requestJson)
-    print(data)
-    try:
-        msg = chat(data['msg'])
-    except Exception as error:
-        print("接口报错")
-        resu = {'code': 1, 'msg': '请求异常: ' + str(error)}
-        return json.dumps(resu, ensure_ascii=False)
     else:
-        resu = {'code': 0, 'data': msg}
-        return json.dumps(resu, ensure_ascii=False)
+        data = json.loads(requestJson)
+        print(data)
+        try:
+            msg = chat(data['msg'])
+        except Exception as error:
+            print("接口报错")
+            resu = {'code': 1, 'msg': '请求异常: ' + str(error)}
+            return json.dumps(resu, ensure_ascii=False)
+        else:
+            resu = {'code': 0, 'data': msg}
+            return json.dumps(resu, ensure_ascii=False)
 
 
 if __name__ == '__main__':
