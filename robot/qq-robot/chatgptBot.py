@@ -2,7 +2,7 @@ import flask, json
 from flask import request
 from revChatGPT.revChatGPT import Chatbot
 
-config = {{"email": "jiangyida@pku.edu.cn", "password": "MRHS,nrqzdhlsc666"}}
+config = {"email": "jiangyida@pku.edu.cn", "password": "MRHS,nrqzdhlsc666"}
 # 创建一个服务，把当前这个python文件当做一个服务
 server = flask.Flask(__name__)
 chatbot = Chatbot(config, conversation_id=None)
