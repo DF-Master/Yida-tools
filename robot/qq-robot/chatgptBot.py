@@ -5,7 +5,7 @@ from revChatGPT.revChatGPT import Chatbot
 config = {"email": "476540183@qq.com", "password": "MRHS,nrqzdhlsc666"}
 # 创建一个服务，把当前这个python文件当做一个服务
 server = flask.Flask(__name__)
-chatbot = Chatbot(config, conversation_id=None)
+chatbot = Chatbot(config)
 
 
 def chat(msg):
