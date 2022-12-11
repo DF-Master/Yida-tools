@@ -18,6 +18,7 @@ def chat(msg):
 def chatapi():
     print('****************************************')
     requestJson = request.get_data()
+    print(requestJson)
     if requestJson is None or requestJson == "" or requestJson == {}:
         resu = {'code': 1, 'msg': '请求内容不能为空'}
         return json.dumps(resu, ensure_ascii=False)
