@@ -1,0 +1,16 @@
+/* game.css */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#game {
+	background-color: #333;
+	border: 1px solid #000;
+	display: block;
+	margin: 0 auto;
+}
