@@ -87,7 +87,7 @@ if __name__ == '__main__':
     base_set = st.text_input(
         'Interpolater(a,b,c,……;A,B,C,……)[A:x axis;B:y1 axis;C y2 axis]',
         value='1,11,21;2,22,42;3,33,63')
-    x_axis_pos_set = st.text_input("X_axis_Pos,Default=0(First)", value=0)
+    x_axis_pos_set = st.text_input("X_axis_Pos,Default=2(Third)", value=2)
     interpolate_count_set = st.text_input("Interpolate_Count_Set", value=10)
     mode_set = st.radio("Mode_set",
                         ("slinear", "nearest", "zero", "quadratic", "cubic"))
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
     diff_list_input = st.text_input('Diff_List_Input(a,b,c,……;A,B,C,……)',
                                     value='1,11,21;2,22,42;3,33,63')
-    target_list_set = st.text_input('Target_List_Set(a,b,c,……)', value='0,1')
+    target_list_set = st.text_input('Target_List_Set(a,b,c,……)', value='1,3')
     if st.button('Diff'):
         try:
 
