@@ -31,7 +31,7 @@ def find_link_pos(ms_peptide, fasta):
     cross_pos_2 = pep2_fasta[int(pep2_num) - 1]
     pep1_start, pep1_end = find_loc_in_fasta(pep1_fasta, fasta)
     pep2_start, pep2_end = find_loc_in_fasta(pep2_fasta,
-                                             fasta)  # if not find return 0,0
+                                             fasta)  # if not find return 1,1
 
     return [[
         pep1_fasta, pep1_num, cross_pos_1, pep1_start, pep1_end,
@@ -328,7 +328,7 @@ def spotlink_report_valid_link_sfDR(
         report_list = [
             i for i in sorted(
                 report_list, key=lambda x: x[2][1], reverse=False)[0:tsd]
-            if int(i[2][2]) >= least_ssn and float(i[2][1]) <= 0.000001
+            if int(i[2][2]) >= least_ssn and float(i[2][1]) <= 0.01
         ]
     elif filtermode == True and f2sf == False:
         report_list = [
@@ -397,6 +397,12 @@ def plink_report_link_pos(ms_csv_file, fasta, ms_peptide_list=5):
                         target[ms_peptide_list + 5],
                         target[ms_peptide_list + 6]
                     ])
+                    link_pos_list = [
+                        i for i in sorted(link_pos_list,
+                                          key=lambda x: x[-1][-1],
+                                          reverse=True)
+                        if float(i[-1][-1]) <= 0.01
+                    ]
                 except:
                     if target[
                             ms_peptide_list] != "Alpha Peptide Protein" and target[
@@ -413,8 +419,8 @@ def plink_report_valid_link_sfDR(
         fasta="MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA",
         set=True,
         filtermode=True,
-        least_ssn=1,
-        threshold=0.9,
+        least_ssn=2,
+        threshold=1,
         ms_peptide_list=5):
 
     report_list = plink_report_link_pos(ms_csv_dir,
@@ -480,9 +486,9 @@ def cal_distance_pos(animo_pos1,
     chain = model['A']
     residue1 = chain[animo_pos1]  # Start from 1 not 0
     residue2 = chain[animo_pos2]
-    atom1 = residue1[animo_core1]
+    atoBQ1 = residue1[animo_core1]
     atom2 = residue2[animo_core2]
-    distance = atom1 - atom2
+    distance = atoBQ1 - atom2
     if autoprint == True:
         print('Distance between', residue1.get_resname(), animo_core1, 'and',
               residue2.get_resname(), animo_core2, 'is ', distance)
@@ -495,8 +501,14 @@ def cal_distance_pos_list(
         pdb_file='G:/MSdata/pdb/bsa.pdb',
         max_distance=20,
         min_distance=6,
+        threshold=1,
         print_all=True,
         read_mod=False):
+
+    if threshold > 1:
+        pos_list = pos_list[0:threshold]
+    elif 0 < threshold < 1:
+        pos_list = pos_list[0:int(threshold * len(pos_list))]
 
     dis_list = [[], []]
     over_max_num = 0
@@ -513,15 +525,18 @@ def cal_distance_pos_list(
         dis_list[0].append(i)
         dis_list[1].append(dis)
 
-    print("Average", format(np.mean(dis_list[1]), '.5f'), ', Median',
-          format(np.median(dis_list[1]), '.5f'), ', Std', np.std(dis_list[1]),
-          ', Num', len(dis_list[1]), ', Over Max Num', over_max_num,
-          ', Over Min Num', over_min_num)
+    print("| Average |", format(np.mean(dis_list[1]), '.5f'), '| Median |',
+          format(np.median(dis_list[1]),
+                 '.5f'), '| Std |', np.std(dis_list[1]), '| Num |',
+          len(dis_list[1]), '| Over Max Num |', over_max_num,
+          '| Over Min Num |', over_min_num, "|")
     if read_mod == True:
         dis_list = list(map(list, zip(*dis_list)))
 
         return dis_list
     else:
+        if print_all == True:
+            print(dis_list[1])
         return dis_list[1]
 
 
@@ -659,111 +674,93 @@ def cal_distance(animo_pos1,
     chain = model['A']
     residue1 = chain[animo_pos1]  # Start from 1 not 0
     residue2 = chain[animo_pos2]
-    atom1 = residue1[animo_core1]
+    atoBQ1 = residue1[animo_core1]
     atom2 = residue2[animo_core2]
-    distance = atom1 - atom2
+    distance = atoBQ1 - atom2
     if autoprint == True:
         print('Distance between', residue1.get_resname(), animo_core1, 'and',
               residue2.get_resname(), animo_core2, 'is ', distance)
     return distance
 
 
+def mod_fasta_head(fasta_str):
+    # print(len(fasta_str))
+    fasta_str = "K" + fasta_str[1:-1] + "K"
+    # print(len(fasta_str))
+    return fasta_str
+
+
 if __name__ == '__main__':
     # plink2crosslink(
-    #     "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/HSA_2022.09.29.filtered_cross-linked_spectra.csv",
-    #     "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/crosslink_spotlinkform/"
-    # )
-
+    #     "G:/MSdata/221129BQM/BQ/reports/conalbumin_con_2022.12.02.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/221129BQM/BQ/reports/crosslink_spotlinkform/")
     print("*" * 40)
-    print("--HSA--" * 5)
+    print("--conalbumin--" * 5)
     print("*" * 40)
     ## define part
-    spotlink_root_dir = "G:/MSdata/220929HSAEGGMILK/spotlink/"
-    plink_root_dir = "G:/MSdata/220929HSAEGGMILK/plink/pLink_task_2022.09.29.19.41.01/reports/crosslink_spotlinkform/"
+    plink_root_dir = "G:/MSdata/221129BQM/BQ/reports/crosslink_spotlinkform/"
     ### fasta
-    fasta = "MKWVTFISLLFLFSSAYSRGVFRRDAHKSEVAHRFKDLGEENFKALVLIAFAQYLQQCPFEDHVKLVNEVTEFAKTCVADESAENCDKSLHTLFGDKLCTVATLRETYGEMADCCAKQEPERNECFLQHKDDNPNLPRLVRPEVDVMCTAFHDNEETFLKKYLYEIARRHPYFYAPELLFFAKRYKAAFTECCQAADKAACLLPKLDELRDEGKASSAKQRLKCASLQKFGERAFKAWAVARLSQRFPKAEFAEVSKLVTDLTKVHTECCHGDLLECADDRADLAKYICENQDSISSKLKECCEKPLLEKSHCIAEVENDEMPADLPSLAADFVESKDVCKNYAEAKDVFLGMFLYEYARRHPDYSVVLLLRLAKTYETTLEKCCAAADPHECYAKVFDEFKPLVEEPQNLIKQNCELFEQLGEYKFQNALLVRYTKKVPQVSTPTLVEVSRNLGKVGSKCCKHPEAKRMPCAEDYLSVVLNQLCVLHEKTPVSDRVTKCCTESLVNRRPCFSALEVDETYVPKEFNAETFTFHADICTLSEKERQIKKQTALVELVKHKPKATKEQLKAVMDDFAAFVEKCCKADDKETCFAEEGKKLVAASQAALGL"
+    bq_fasta = "MKLILCTVLSLGIAAVCFAAPPKSVIRWCTISSPEEKKCNNLRDLTQQERISLTCVQKATYLDCIKAIANNEADAISLDGGQAFEAGLAPYKLKPIAAEVYEHTEGSTTSYYAVAVVKKGTEFTVNDLQGKTSCHTGLGRSAGWNIPIGTLLHRGAIEWEGIESGSVEQAVAKFFSASCVPGATIEQKLCRQCKGDPKTKCARNAPYSGYSGAFHCLKDGKGDVAFVKHTTVNENAPDQKDEYELLCLDGSRQPVDNYKTCNWARVAAHAVVARDDNKVEDIWSFLSKAQSDFGVDTKSDFHLFGPPGKKDPVLKDLLFKDSAIMLKRVPSLMDSQLYLGFEYYSAIQSMRKDQLTPSPRENRIQWCAVGKDEKSKCDRWSVVSNGDVECTVVDETKDCIIKIMKGEADAVALDGGLVYTAGVCGLVPVMAERYDDESQCSKTDERPASYFAVAVARKDSNVNWNNLKGKKSCHTAVGRTAGWVIPMGLIHNRTGTCNFDEYFSEGCAPGSPPNSRLCQLCQGSGGIPPEKCVASSHEKYFGYTGALRCLVEKGDVAFIQHSTVEENTGGKNKADWAKNLQMDDFELLCTDGRRANVMDYRECNLAEVPTHAVVVRPEKANKIRDLLERQEKRFGVNGSEKSKFMMFESQNKDLLFKDLTKCLFKVREGTTYKEFLGDKFYTVISSLKTCNPSDILQMCSFLEGK"
     ### file_dir
-    spotlink_file_0923_H0_fDR = spotlink_root_dir + 'JYD_20220923_H0_HCDFT_result_filtered.csv'
-    spotlink_file_0923_H1_fDR = spotlink_root_dir + 'JYD_20220923_H1_HCDFT_result_filtered.csv'
-    spotlink_file_0923_H5_fDR = spotlink_root_dir + 'JYD_20220923_H5_HCDFT_result_filtered.csv'
-    spotlink_file_0923_H25_fDR = spotlink_root_dir + 'JYD_20220923_H25_HCDFT_result_filtered.csv'
-    spotlink_file_0923_H100_fDR = spotlink_root_dir + 'JYD_20220923_H100_HCDFT_result_filtered.csv'
-    plink_file_0923_H0_fDR = plink_root_dir + "JYD_20220923_H0.csv"
-    plink_file_0923_H5_fDR = plink_root_dir + "JYD_20220923_H5.csv"
-    plink_file_0923_H25_fDR = plink_root_dir + "JYD_20220923_H25.csv"
-    plink_file_0923_H100_fDR = plink_root_dir + "JYD_20220923_H100.csv"
-    plink_file_0923_H1_fDR = plink_root_dir + "JYD_20220923_H1.csv"
-    H0_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H0_fDR,
-                                                fasta,
-                                                f2sf=False)[0]
-    H1_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H1_fDR,
-                                                fasta,
-                                                f2sf=False)[0]
-    H5_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H5_fDR,
-                                                fasta,
-                                                f2sf=False)[0]
-    H25_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H25_fDR,
-                                                 fasta,
-                                                 f2sf=False)[0]
-    H100_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H100_fDR,
-                                                  fasta,
-                                                  f2sf=False)[0]
-    # H0_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H0_fDR,
-    #                                             fasta,
-    #                                             f2sf=True)[0]
-    # H1_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H1_fDR,
-    #                                             fasta,
-    #                                             f2sf=True)[0]
-    # H5_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H5_fDR,
-    #                                             fasta,
-    #                                             f2sf=True)[0]
-    # H25_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H25_fDR,
-    #                                              fasta,
-    #                                              f2sf=True)[0]
-    # H100_0923_s = spotlink_report_valid_link_sfDR(spotlink_file_0923_H100_fDR,
-    #                                               fasta,
-    #                                               f2sf=True)[0]
-    H0_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H0_fDR, fasta)[0]
-    H1_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H1_fDR, fasta)[0]
-    H5_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H5_fDR, fasta)[0]
-    H25_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H25_fDR,
-                                              fasta)[0]
-    H100_0923_p = plink_report_valid_link_sfDR(plink_file_0923_H100_fDR,
-                                               fasta)[0]
-    ## repeat part
+    plink_file_221121_BQ0_fDR = "G:/MSdata/221020BQM/BQ/reports/crosslink_spotlinkform/" + 'JYD_20220908_BQ0.csv'
+    plink_file_221121_BQ1_fDR = plink_root_dir + "JYD_20221121_BQ_1.csv"
+    plink_file_221121_BQ2_fDR = plink_root_dir + "JYD_20221121_BQ_2.csv"
+    plink_file_221121_BQ5_fDR = plink_root_dir + "JYD_20221121_BQ_5.csv"
+    plink_file_221121_BQ10_fDR = plink_root_dir + "JYD_20221121_BQ_10.csv"
+    plink_file_221121_BQ25_fDR = plink_root_dir + "JYD_20221121_BQ_25.csv"
+    plink_file_221121_BQ50_fDR = plink_root_dir + "JYD_20221121_BQ_50.csv"
+    plink_file_221121_BQ100_fDR = plink_root_dir + "JYD_20221121_BQ_100.csv"
+    plink_file_221121_BQ200_fDR = plink_root_dir + "JYD_20221121_BQ_200.csv"
+    plink_file_221121_BQ300_fDR = plink_root_dir + "JYD_20221121_BQ_300.csv"
 
-    H0_repeat = cal_multi_list([H0_0923_s, H0_0923_p])
-    H1_repeat = cal_multi_list([H1_0923_s, H1_0923_p])
-    H5_repeat = cal_multi_list([H5_0923_s, H5_0923_p])
-    H25_repeat = cal_multi_list([H25_0923_s, H25_0923_p])
-    H100_repeat = cal_multi_list([H100_0923_s, H100_0923_p])
-    # H0_repeat = cal_multi_list([H0_0923_s, H0_0923_s])
-    # H1_repeat = cal_multi_list([H1_0923_s, H1_0923_s])
-    # H5_repeat = cal_multi_list([H5_0923_s, H5_0923_s])
-    # H25_repeat = cal_multi_list([H25_0923_s, H25_0923_s])
-    # H100_repeat = cal_multi_list([H100_0923_s, H100_0923_s])
+    BQ0_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ0_fDR,
+                                             bq_fasta)[0]
+    BQ1_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ1_fDR,
+                                             bq_fasta)[0]
+    BQ2_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ2_fDR,
+                                             bq_fasta)[0]
+    BQ5_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ5_fDR,
+                                             bq_fasta)[0]
+    BQ10_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ10_fDR,
+                                             bq_fasta)[0]
+    BQ25_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ25_fDR,
+                                              bq_fasta)[0]
+    BQ100_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ100_fDR,
+                                               bq_fasta)[0]
+    BQ200_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ200_fDR,
+                                               bq_fasta)[0]
+    BQ300_221121_p = plink_report_valid_link_sfDR(plink_file_221121_BQ300_fDR,
+                                               bq_fasta)[0]
 
-    # H0_repeat = cal_multi_list([H0_0923_p, H0_0923_p])
-    # H1_repeat = cal_multi_list([H1_0923_p, H1_0923_p])
-    # H5_repeat = cal_multi_list([H5_0923_p, H5_0923_p])
-    # H25_repeat = cal_multi_list([H25_0923_p, H25_0923_p])
-    # H100_repeat = cal_multi_list([H100_0923_p, H100_0923_p])
 
-    H_repeat_list = [H0_repeat, H1_repeat, H5_repeat, H25_repeat, H100_repeat]
-    H0_0923_s_list = [H0_0923_s, H1_0923_s, H5_0923_s, H25_0923_s, H100_0923_s]
+    BQ0_repeat = cal_multi_list([BQ0_221121_p, BQ0_221121_p])
+    BQ1_repeat = cal_multi_list([BQ1_221121_p, BQ1_221121_p])
+    BQ2_repeat = cal_multi_list([BQ2_221121_p, BQ2_221121_p])
+    BQ5_repeat = cal_multi_list([BQ5_221121_p, BQ5_221121_p])
+    BQ10_repeat = cal_multi_list([BQ10_221121_p, BQ10_221121_p])
+    BQ25_repeat = cal_multi_list([BQ25_221121_p, BQ25_221121_p])
+    BQ100_repeat = cal_multi_list([BQ100_221121_p, BQ100_221121_p])
+    BQ200_repeat = cal_multi_list([BQ200_221121_p, BQ200_221121_p])
+    BQ300_repeat = cal_multi_list([BQ300_221121_p, BQ300_221121_p])
 
-    for i in H_repeat_list:
+
+    M_repeat_list = [BQ0_repeat, BQ1_repeat, BQ2_repeat, BQ5_repeat, BQ10_repeat, BQ25_repeat, BQ100_repeat,BQ200_repeat,BQ300_repeat]
+
+    for i in M_repeat_list:
         k = [
             j for j in i
-            if fasta[int(j[0]) - 1] == "K" or fasta[int(j[1]) - 1] == "K"
+            if bq_fasta[int(j[0]) -
+                                 1] == "K" or bq_fasta[int(j[1]) -
+                                                                1] == "K"
         ]
-        cal_distance_pos_list(k[0:75],
-                              fasta=fasta,
-                              pdb_file='G:/MSdata/pdb/HSA.pdb',
+        cal_distance_pos_list(k,
+                              fasta=bq_fasta,
+                              pdb_file='G:/MSdata/pdb/conalbumin.pdb',
+                              threshold=400,
                               print_all=False)
         report_animo_ratio(k,
                            pos_form=True,
-                           fasta_file=fasta,
+                           fasta_file=bq_fasta,
                            tableform=True,
-                           ratio_output=True,
-                           threshold=75)
+                           ratio_output=False,
+                           threshold=400)
