@@ -4,7 +4,7 @@ import os
 if __name__ == "__main__":
     protein_list = ["BSA", "BQ", "LBM"]
     crosslink_report_root_list = [
-        "G:/MSdata/230306BQM/BSA-E/reports/crosslink/",
+        "G:/MSdata/230306BQM/BSA/reports/crosslink/",
         "G:/MSdata/230306BQM/BQ3/reports/crosslink/",
         "G:/MSdata/230306BQM/LBM3/reports/crosslink/"
     ]
@@ -14,12 +14,12 @@ if __name__ == "__main__":
         "G:/MSdata/230306BQM/LBMmono/reports/monolink/"
     ]
     looplink_report_root_list = [
-        "G:/MSdata/230306BQM/BSA-E/reports/looplink/",
+        "G:/MSdata/230306BQM/BSA/reports/looplink/",
         "G:/MSdata/230306BQM/BQ3/reports/looplink/",
         "G:/MSdata/230306BQM/LBM3/reports/looplink/"
     ]
     crosslink_report_file_list = [
-        "G:/MSdata/230306BQM/BSA-E/reports/bsa_con_2023.03.08.filtered_cross-linked_spectra.csv",
+        "G:/MSdata/230306BQM/BSA/reports/bsa_con_2023.03.06.filtered_cross-linked_spectra.csv",
         "G:/MSdata/230306BQM/BQ3/reports/conalbumin_con_2023.03.08.filtered_cross-linked_spectra.csv",
         "G:/MSdata/230306BQM/LBM3/reports/Lactoferrin_con_2023.03.09.filtered_cross-linked_spectra.csv"
     ]
@@ -29,14 +29,14 @@ if __name__ == "__main__":
         "G:/MSdata/230306BQM/LBMmono/reports/Lactoferrin_con_2023.03.07.filtered_mono-linked_spectra.csv"
     ]
     looplink_report_file_list = [
-        "G:/MSdata/230306BQM/BSA-E/reports/bsa_con_2023.03.08.filtered_loop-linked_spectra.csv",
+        "G:/MSdata/230306BQM/BSA/reports/bsa_con_2023.03.06.filtered_loop-linked_spectra.csv",
         "G:/MSdata/230306BQM/BQ3/reports/conalbumin_con_2023.03.08.filtered_loop-linked_spectra.csv",
         "G:/MSdata/230306BQM/LBM3/reports/Lactoferrin_con_2023.03.09.filtered_loop-linked_spectra.csv"
     ]
     fasta_root = "G:/MSdata/fasta/"
     fasta_name_list = ["bsa", "conalbumin", "Lactoferrin"]
 
-    for i in [1, 2]:
+    for i in [0]:
         with open(fasta_root + fasta_name_list[i] + ".fasta", "r") as f:
             fasta = "".join([i.strip() for i in f][1:])
 
