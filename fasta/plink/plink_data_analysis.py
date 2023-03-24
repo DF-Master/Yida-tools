@@ -243,7 +243,7 @@ def plink_report_link_pos(ms_csv_file,
                         i for i in sorted(link_pos_list,
                                           key=lambda x: x[-1][-1],
                                           reverse=True)
-                        # if float(i[-1][-1]) <= 0.05
+                        # if float(i[-1][-1]) <= 0.25
                     ]
                 except:
                     if target[
@@ -330,6 +330,8 @@ def cal_distance_pos_list(
         pos_list,
         fasta="MKWVTFISLLLLFSSAYSRGVFRRDTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNELTEFAKTCVADESHAGCEKSLHTLFGDELCKVASLRETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDEFKADEKKFWGKYLYEIARRHPYFYAPELLYYANKYNGVFQECCQAEDKGACLLPKIETMREKVLTSSARQRLRCASIQKFGERALKAWSVARLSQKFPKAEFVEVTKLVTDLTKVHKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPLLEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQEAKDAFLGSFLYEYSRRHPEYAVSVLLRLAKEYEATLEECCAKDDPHACYSTVFDKLKHLVDEPQNLIKQNCDQFEKLGEYGFQNALIVRYTRKVPQVSTPTLVEVSRSLGKVGTRCCTKPESERMPCTEDYLSLILNRLCVLHEKTPVSEKVTKCCTESLVNRRPCFSALTPDETYVPKAFDEKLFTFHADICTLPDTEKQIKKQTALVELLKHKPKATEEQLKTVMENFVAFVDKCCAADDKEACFAVEGPKLVVSTQTALA",
         pdb_file='G:/MSdata/pdb/bsa.pdb',
+        animo_core1='CA',
+        animo_core2='CA',
         max_distance=20,
         min_distance=6,
         threshold=1,
@@ -346,7 +348,12 @@ def cal_distance_pos_list(
     over_min_num = 0
     for i in pos_list:
         dis = float(
-            format(cal_distance_pos(int(i[0]), int(i[1]), pdb_file), '.5f'))
+            format(
+                cal_distance_pos(int(i[0]),
+                                 int(i[1]),
+                                 pdb_file,
+                                 animo_core1=animo_core1,
+                                 animo_core2=animo_core2), '.5f'))
         if dis >= max_distance:
             over_max_num += 1
         elif dis <= min_distance:
@@ -356,19 +363,26 @@ def cal_distance_pos_list(
         dis_list[0].append(i)
         dis_list[1].append(dis)
 
-    print("| Average |", format(np.mean(dis_list[1]), '.5f'), '| Median |',
-          format(np.median(dis_list[1]),
-                 '.5f'), '| Std |', np.std(dis_list[1]), '| Num |',
-          len(dis_list[1]), '| Over Max Num |', over_max_num,
-          '| Over Min Num |', over_min_num, "|")
     if read_mod == True:
+        print("| Average |", format(np.mean(dis_list[1]), '.5f'), '| Median |',
+              format(np.median(dis_list[1]),
+                     '.5f'), '| Std |', np.std(dis_list[1]), '| Num |',
+              len(dis_list[1]), '| Over Max Num |', over_max_num,
+              '| Over Min Num |', over_min_num, "|")
         dis_list = list(map(list, zip(*dis_list)))
 
         return dis_list
     else:
         if print_all == True:
             print(dis_list[1])
-        return dis_list[1]
+        return [
+            dis_list[0], dis_list[1], "| Average |",
+            format(np.mean(dis_list[1]), '.5f'), '| Median |',
+            format(np.median(dis_list[1]), '.5f'), '| Std |',
+            np.std(dis_list[1]), '| Num |',
+            len(dis_list[1]), '| Over Max Num |', over_max_num,
+            '| Over Min Num |', over_min_num, "|"
+        ]
 
 
 #####
