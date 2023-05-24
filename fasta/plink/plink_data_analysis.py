@@ -2,6 +2,7 @@ import csv
 from Bio import PDB
 import numpy as np
 import os
+import settings as set
 
 
 def find_loc_in_fasta(pep, fasta):
@@ -177,7 +178,7 @@ def report_animo_ratio(
 # Unit Form
 
 
-def plink2normalform(plink_file, output_dir):
+def plink2normalform(plink_file, output_dir, del_mode=True):
     folder = os.path.exists(output_dir)
 
     if not folder:
@@ -189,17 +190,43 @@ def plink2normalform(plink_file, output_dir):
 
     with open(plink_file) as f:
         reader = csv.reader(f)
-
         for line in reader:
-            if "." in line[1]:
-                with open(output_dir + str(line[1].split(".")[0]) + ".csv",
-                          "a",
-                          newline='') as outfile:
-                    writer = csv.writer(outfile)
-                    writer.writerow([
-                        line[0], line[1], line[2], line[3], line[5], line[4],
-                        line[7], line[8], line[13], line[14], line[9], line[10]
-                    ])
+            open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                 "a",
+                 newline='')
+            with open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                      "r") as outfile:
+                csv_reader_f = csv.reader(outfile)
+                if not any(csv_reader_f):
+                    with open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                              "a",
+                              newline='') as outfile_append:
+                        writer = csv.writer(outfile_append)
+                        if del_mode == False:
+                            writer.writerow([
+                                "Order", "Title", "Charge", "Precursor_Mass",
+                                "Peptide", "Peptide_Type", "Linker",
+                                "Peptide_Mass", "Modifications", "Evalue",
+                                "Score", "Precursor_Mass_Error(Da)",
+                                "Precursor_Mass_Error(ppm)", "Proteins",
+                                "Protein_Type", "FileID", "LabelID",
+                                "Alpha_Matched", "Beta_Matched",
+                                "Alpha_Evalue", "Beta_Evalue"
+                            ])
+                else:
+                    with open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                              "a",
+                              newline='') as outfile_append:
+                        writer = csv.writer(outfile_append)
+                        if "." in line[1]:
+                            if del_mode == True:
+                                writer.writerow([
+                                    line[0], line[1], line[2], line[3],
+                                    line[5], line[4], line[7], line[8],
+                                    line[13], line[14], line[9], line[10]
+                                ])
+                            else:
+                                writer.writerow(line)
 
 
 #  Input ms_csv_file
@@ -474,7 +501,7 @@ def analyze_neighborhood(fasta,
 def analyze_distance_neighboorhood(fasta,
                                    pdb_file,
                                    target='K',
-                                   distance_max=20,
+                                   distance_max=25,
                                    distance_min=6):
     animo_list = list("ACDEFGHIKLMNPQRSTVWY")
     dis_neighboorhood_list = [[i, []] for i in animo_list]
@@ -504,3 +531,35 @@ def analyze_distance_neighboorhood(fasta,
             print("Error")
 
     return (dis_neighboorhood_list)
+
+
+if __name__ == "__main__":
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/bsa_con_2023.03.17.filtered_cross-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/crosslink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/bsa_con_2023.03.17.filtered_loop-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/looplink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_cross-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/crosslink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_loop-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/looplink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/Lactoferrin_con_2023.03.23.filtered_cross-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/crosslink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/Lactoferrin_con_2023.03.23.filtered_loop-linked_spectra.csv",
+    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/looplink_withdis/",
+    #     del_mode=False)
+    with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
+        fasta = "".join([i.strip() for i in f][1:])
+    print(fasta)
+    analyze_distance_neighboorhood(
+        fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
