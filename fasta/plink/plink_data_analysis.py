@@ -534,14 +534,14 @@ def analyze_distance_neighboorhood(fasta,
 
 
 if __name__ == "__main__":
-    # plink2normalform(
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/bsa_con_2023.03.17.filtered_cross-linked_spectra.csv",
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/crosslink_withdis/",
-    #     del_mode=False)
-    # plink2normalform(
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/bsa_con_2023.03.17.filtered_loop-linked_spectra.csv",
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BSA/reports-3/looplink_withdis/",
-    #     del_mode=False)
+    plink2normalform(
+        "G:/MSdata/230317BQMC/BSA-KSTY/reports/bsa_con_2023.06.02.filtered_cross-linked_spectra.csv",
+        "G:/MSdata/230317BQMC/BSA-KSTY/reports/crosslink_withdis/",
+        del_mode=False)
+    plink2normalform(
+        "G:/MSdata/230317BQMC/BSA-KSTY/reports/bsa_con_2023.06.02.filtered_loop-linked_spectra.csv",
+        "G:/MSdata/230317BQMC/BSA-KSTY/reports/looplink_withdis/",
+        del_mode=False)
     # plink2normalform(
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_cross-linked_spectra.csv",
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/crosslink_withdis/",
@@ -558,8 +558,9 @@ if __name__ == "__main__":
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/Lactoferrin_con_2023.03.23.filtered_loop-linked_spectra.csv",
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/looplink_withdis/",
     #     del_mode=False)
-    with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
-        fasta = "".join([i.strip() for i in f][1:])
-    print(fasta)
-    analyze_distance_neighboorhood(
-        fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
+
+    # with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
+    #     fasta = "".join([i.strip() for i in f][1:])
+    # print(fasta)
+    # analyze_distance_neighboorhood(
+    #     fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
