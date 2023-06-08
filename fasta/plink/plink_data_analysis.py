@@ -535,12 +535,12 @@ def analyze_distance_neighboorhood(fasta,
 
 if __name__ == "__main__":
     plink2normalform(
-        "G:/MSdata/230317BQMC/BSA-KSTY/reports/bsa_con_2023.06.02.filtered_cross-linked_spectra.csv",
-        "G:/MSdata/230317BQMC/BSA-KSTY/reports/crosslink_withdis/",
+        "G:/MSdata/230317BQMC/BSA-ALL/reports/bsa_con_2023.06.06.filtered_cross-linked_spectra.csv",
+        "G:/MSdata/230317BQMC/BSA-ALL/reports/crosslink_withdis/",
         del_mode=False)
     plink2normalform(
-        "G:/MSdata/230317BQMC/BSA-KSTY/reports/bsa_con_2023.06.02.filtered_loop-linked_spectra.csv",
-        "G:/MSdata/230317BQMC/BSA-KSTY/reports/looplink_withdis/",
+        "G:/MSdata/230317BQMC/BSA-ALL/reports/bsa_con_2023.06.06.filtered_loop-linked_spectra.csv",
+        "G:/MSdata/230317BQMC/BSA-ALL/reports/looplink_withdis/",
         del_mode=False)
     # plink2normalform(
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_cross-linked_spectra.csv",
