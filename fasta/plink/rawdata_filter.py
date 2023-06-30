@@ -14,7 +14,7 @@ if __name__ == "__main__":
     for i in [0]:
         with open(fasta_root + fasta_name_list[i] + ".fasta", "r") as f:
             fasta = "".join([i.strip() for i in f][1:])
-        for j in [[crosslink_report_root_list]]:
+        for j in [[looplink_report_root_list]]:
             all_filename_list = os.listdir(j[0][i])
             all_filename_list.sort(
                 key=lambda x: int(x.split("_")[1]) * 100 + int(
@@ -26,16 +26,16 @@ if __name__ == "__main__":
                 with open(j[0][i] + k, "r") as file:
                     csv_reader = csv.reader(file)
                     data = [row for row in csv_reader]
-                    crosslink_pos_values = [
-                        pda.find_link_pos(row[4], fasta) for row in data
-                        if "-" in row[4]  #CrossLink
-                    ]
                     # crosslink_pos_values = [
-                    #     pda.find_link_pos(
-                    #         str(")-" + row[4].split("(")[0] + "(").join(
-                    #             row[4].split(")(")), fasta) for row in data
-                    #     if ")(" in row[4]  #LoopLink
+                    #     pda.find_link_pos(row[4], fasta) for row in data
+                    #     if "-" in row[4]  #CrossLink
                     # ]
+                    crosslink_pos_values = [
+                        pda.find_link_pos(
+                            str(")-" + row[4].split("(")[0] + "(").join(
+                                row[4].split(")(")), fasta) for row in data
+                        if ")(" in row[4]  #LoopLink
+                    ]
                     for l in range(len(data)):
                         if l == 0:
                             for s in [
