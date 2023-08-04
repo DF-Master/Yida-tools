@@ -10,25 +10,25 @@ if __name__ == "__main__":
     fasta_root = set.fasta_root
     fasta_name_list = ["bsa", "conalbumin", "Lactoferrin"]
     pdb_root = set.pdb_root
-    for i in [1, 2]:
+    for i in [0, 1, 2]:
         with open(fasta_root + fasta_name_list[i] + ".fasta", "r") as f:
             fasta = "".join([i.strip() for i in f][1:])
         for j in [[crosslink_report_root_list], [looplink_report_root_list]]:
             all_filename_list = os.listdir(j[0][i])
-            all_filename_list.sort(
-                key=lambda x: int(x.split("_")[1]) * 100 + int(
-                    x.split(protein_list[i])[-1].strip("_").strip(".csv")))
+            all_filename_list.sort()
+            # key=lambda x: int(x.split("_")[1]) * 100 + int(
+            #     x.split(protein_list[i])[-1].strip("_").strip(".csv")))
 
             output_list = [all_filename_list, [], []]
             for k in all_filename_list:
                 output_list[1].append(
-                    pda.plink_report_valid_link_sfDR(
-                        j[0][i] + k,
-                        fasta=fasta,
-                        least_ssn=1,
-                        ms_peptide_list=4,
-                        type="looplink",
-                        score_count_mode=False)[1])
+                    pda.plink_report_valid_link_sfDR(j[0][i] + k,
+                                                     fasta=fasta,
+                                                     least_ssn=1,
+                                                     ms_peptide_list=4,
+                                                     type="looplink",
+                                                     score_count_mode=False)[1]
+                )  # Same for CL and LL,[1] stands for report_list, and [0] stands for hard_loc_list
 
             print(all_filename_list)
             print(
@@ -41,7 +41,7 @@ if __name__ == "__main__":
                                        pos_form=True,
                                        fasta_file=fasta,
                                        tableform=True,
-                                       ratio_output=False,
+                                       ratio_output=True,
                                        threshold=10000)
 
                 # link_list = []

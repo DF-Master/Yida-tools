@@ -11,14 +11,15 @@ if __name__ == "__main__":
     fasta_name_list = ["bsa", "conalbumin", "Lactoferrin"]
     pdb_root = set.pdb_root
 
-    for i in [0]:
+    for i in [1, 2]:
         with open(fasta_root + fasta_name_list[i] + ".fasta", "r") as f:
-            fasta = "".join([i.strip() for i in f][1:])
+            fasta = "".join([ii.strip() for ii in f][1:])
+            # print(fasta)
         for j in [[looplink_report_root_list]]:
             all_filename_list = os.listdir(j[0][i])
-            all_filename_list.sort(
-                key=lambda x: int(x.split("_")[1]) * 100 + int(
-                    x.split(protein_list[i])[-1].strip("_").strip(".csv")))
+            # all_filename_list.sort(
+            #     key=lambda x: int(x.split("_")[1]) * 100 + int(
+            #         x.split(protein_list[i])[-1].strip("_").strip(".csv")))
 
             # output_list = [all_filename_list, [], []]
             for k in all_filename_list:

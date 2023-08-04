@@ -234,7 +234,6 @@ def plink_report_link_pos(ms_csv_file,
                           fasta,
                           ms_peptide_list=5,
                           type="crosslink"):
-    # Spotlink
     link_pos_list = []
     with open(ms_csv_file, "r") as f:
         reader = csv.reader(f)
@@ -534,17 +533,17 @@ def analyze_distance_neighboorhood(fasta,
 
 
 if __name__ == "__main__":
-    # plink2normalform(
-    #     "G:/MSdata/230614WXZBSA/BSABS3/reports/bsa_con_2023.06.14.filtered_cross-linked_spectra.csv",
-    #     "G:/MSdata/230614WXZBSA/BSABS3/reports/crosslink_withdis/",
-    #     del_mode=False)
     plink2normalform(
-        "G:/MSdata/230614WXZBSA/BSABS3/reports/bsa_con_2023.06.14.filtered_loop-linked_spectra.csv",
-        "G:/MSdata/230614WXZBSA/BSABS3/reports/looplink_withdis/",
+        "G:/MSdata/230703BQMCOLD/LBM/reports/Lactoferrin_con_2023.07.03.filtered_cross-linked_spectra.csv",
+        "G:/MSdata/230703BQMCOLD/LBM/reports/crosslink_withdis/",
         del_mode=False)
     # plink2normalform(
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_cross-linked_spectra.csv",
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/crosslink_withdis/",
+    #     "G:/MSdata/230703BQMCOLD/BSA/reports/bsa_con_2023.07.03.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/230703BQMCOLD/BSA/reports/crosslink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "G:/MSdata/230703BQMCOLD/CA/reports/conalbumin_con_2023.07.04.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/230703BQMCOLD/CA/reports/crosslink_withdis/",
     #     del_mode=False)
     # plink2normalform(
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_loop-linked_spectra.csv",
