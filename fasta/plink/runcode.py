@@ -10,7 +10,7 @@ if __name__ == "__main__":
     fasta_root = set.fasta_root
     fasta_name_list = ["bsa", "conalbumin", "Lactoferrin"]
     pdb_root = set.pdb_root
-    for i in [0, 1, 2]:
+    for i in [0]:
         with open(fasta_root + fasta_name_list[i] + ".fasta", "r") as f:
             fasta = "".join([i.strip() for i in f][1:])
         for j in [[crosslink_report_root_list], [looplink_report_root_list]]:

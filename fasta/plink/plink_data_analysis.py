@@ -500,8 +500,8 @@ def analyze_neighborhood(fasta,
 def analyze_distance_neighboorhood(fasta,
                                    pdb_file,
                                    target='K',
-                                   distance_max=25,
-                                   distance_min=6):
+                                   distance_max=15,
+                                   distance_min=0):
     animo_list = list("ACDEFGHIKLMNPQRSTVWY")
     dis_neighboorhood_list = [[i, []] for i in animo_list]
     fasta_list = list(fasta)
@@ -533,12 +533,12 @@ def analyze_distance_neighboorhood(fasta,
 
 
 if __name__ == "__main__":
-    plink2normalform(
-        "G:/MSdata/230703BQMCOLD/LBM/reports/Lactoferrin_con_2023.07.03.filtered_cross-linked_spectra.csv",
-        "G:/MSdata/230703BQMCOLD/LBM/reports/crosslink_withdis/",
-        del_mode=False)
     # plink2normalform(
-    #     "G:/MSdata/230703BQMCOLD/BSA/reports/bsa_con_2023.07.03.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/230801LAMPLUS/BSA/reports/bsa_con_2023.08.01.filtered_cross-linked_spectra.csv",
+    #     "G:/MSdata/230801LAMPLUS/BSA/reports//crosslink_withdis/",
+    #     del_mode=False)
+    # plink2normalform(
+    #     "G:/MSdata/230703BQMCOLD/BSA/reports/Lactoferrin_con_2023.07.03.filtered_cross-linked_spectra.csv",
     #     "G:/MSdata/230703BQMCOLD/BSA/reports/crosslink_withdis/",
     #     del_mode=False)
     # plink2normalform(
@@ -546,8 +546,8 @@ if __name__ == "__main__":
     #     "G:/MSdata/230703BQMCOLD/CA/reports/crosslink_withdis/",
     #     del_mode=False)
     # plink2normalform(
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/conalbumin_con_2023.03.24.filtered_loop-linked_spectra.csv",
-    #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/BQ/reports-4/looplink_withdis/",
+    #     "G:/MSdata/230801LAMPLUS/BSA/reports/bsa_con_2023.08.01.filtered_loop-linked_spectra.csv",
+    #     "G:/MSdata/230801LAMPLUS/BSA/reports//looplink_withdis/",
     #     del_mode=False)
     # plink2normalform(
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/Lactoferrin_con_2023.03.23.filtered_cross-linked_spectra.csv",
@@ -558,8 +558,25 @@ if __name__ == "__main__":
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/looplink_withdis/",
     #     del_mode=False)
 
-    # with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
-    #     fasta = "".join([i.strip() for i in f][1:])
-    # print(fasta)
-    # analyze_distance_neighboorhood(
-    #     fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
+    import settings as set
+
+    with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
+        fasta = "".join([i.strip() for i in f][1:])
+    print(fasta)
+
+    analyze_distance_neighboorhood(
+        fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
+
+    with open(set.fasta_root + "bsa" + ".fasta", "r") as f:
+        fasta = "".join([i.strip() for i in f][1:])
+    print(fasta)
+
+    analyze_distance_neighboorhood(
+        fasta, set.pdb_root + "BSA-AF-P02769-F1-model_v4.pdb")
+
+    with open(set.fasta_root + "conalbumin" + ".fasta", "r") as f:
+        fasta = "".join([i.strip() for i in f][1:])
+    print(fasta)
+
+    analyze_distance_neighboorhood(
+        fasta, set.pdb_root + "CA-AF-P02789-F1-model_v4.pdb")
