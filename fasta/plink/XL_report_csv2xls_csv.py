@@ -2,11 +2,11 @@ import os
 import pandas as pd
 
 # Define Pos Column
-column1 = 26  # Column AA,start from 0
-colume2 = 32  # Column AG,start from 0
+column1 = 28  # Column AC,start from 0
+column2 = 24  # Column Y,start from 0
 
 # Set the path to the directory containing the CSV files
-csv_dir = r'C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\BSA\reports-3\BSA-type1XL'
+csv_dir = r'G:\MSdata\231102BSQAdK_zhaort\ADK_con\reports\cross-link'
 
 # Iterate over all files in the directory
 for file in os.listdir(csv_dir):
@@ -18,10 +18,10 @@ for file in os.listdir(csv_dir):
         # Calculate the repeat times for each row and append it as a new column
         df['Repeat Times'] = df.groupby(
             [df.columns[column1],
-             df.columns[colume2]])[df.columns[0]].transform('count')
+             df.columns[column2]])[df.columns[0]].transform('count')
         # Drop rows with the same value in the 27th and 33rd columns
         df = df.drop_duplicates(
-            subset=[df.columns[column1], df.columns[colume2]])
+            subset=[df.columns[column1], df.columns[column2]])
 
         # Save the modified DataFrame to an Excel file
         output_file = os.path.join(csv_dir,

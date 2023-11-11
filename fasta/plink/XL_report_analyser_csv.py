@@ -3,8 +3,8 @@ import csv
 # Specify the input and output file paths
 # input_file = r"G:/MSdata/220329ADK/adk/spotlink/WXZ_20220329_AdK_HCDFT_site_filtered.csv"
 # output_file = r"G:/MSdata/220329ADK/adk/spotlink/WXZ_20220329_AdK_HCDFT_site_filtered_modified.csv"
-input_file = r"G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/adk_2022.04.02.filtered_cross-linked_spectra.csv"
-output_file = r"G:/MSdata/220329ADK/adk/plink/pLink_task_2022.04.02.20.19.24/reports/adk_2022.04.02.filtered_cross-linked_spectra_modified.csv"
+input_file = r"G:\MSdata\231102BSQAdK_zhaort\ADK_con\reports\adk_con_2023.11.02.filtered_cross-linked_spectra.csv"
+output_file = r"G:\MSdata\231102BSQAdK_zhaort\ADK_con\reports\adk_con_2023.11.02.filtered_cross-linked_spectra_modified.csv"
 fasta_file = r"G:/MSdata/fasta/adk.fasta"
 split_colume = 4  # start from 0, plink=4, spotlink=2
 

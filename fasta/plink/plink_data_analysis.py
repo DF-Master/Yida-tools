@@ -191,42 +191,49 @@ def plink2normalform(plink_file, output_dir, del_mode=True):
     with open(plink_file) as f:
         reader = csv.reader(f)
         for line in reader:
-            open(output_dir + str(line[1].split(".")[0]) + ".csv",
-                 "a",
-                 newline='')
-            with open(output_dir + str(line[1].split(".")[0]) + ".csv",
-                      "r") as outfile:
-                csv_reader_f = csv.reader(outfile)
-                if not any(csv_reader_f):
-                    with open(output_dir + str(line[1].split(".")[0]) + ".csv",
-                              "a",
-                              newline='') as outfile_append:
-                        writer = csv.writer(outfile_append)
-                        if del_mode == False:
-                            writer.writerow([
-                                "Order", "Title", "Charge", "Precursor_Mass",
-                                "Peptide", "Peptide_Type", "Linker",
-                                "Peptide_Mass", "Modifications", "Evalue",
-                                "Score", "Precursor_Mass_Error(Da)",
-                                "Precursor_Mass_Error(ppm)", "Proteins",
-                                "Protein_Type", "FileID", "LabelID",
-                                "Alpha_Matched", "Beta_Matched",
-                                "Alpha_Evalue", "Beta_Evalue"
-                            ])
-                else:
-                    with open(output_dir + str(line[1].split(".")[0]) + ".csv",
-                              "a",
-                              newline='') as outfile_append:
-                        writer = csv.writer(outfile_append)
-                        if "." in line[1]:
-                            if del_mode == True:
+            if line[0] != "Order":
+                open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                     "a",
+                     newline='')
+                with open(output_dir + str(line[1].split(".")[0]) + ".csv",
+                          "r") as outfile:
+                    csv_reader_f = csv.reader(outfile)
+                    if not any(csv_reader_f):
+                        with open(output_dir + str(line[1].split(".")[0]) +
+                                  ".csv",
+                                  "a",
+                                  newline='') as outfile_append:
+                            writer = csv.writer(outfile_append)
+                            if del_mode == False:
                                 writer.writerow([
-                                    line[0], line[1], line[2], line[3],
-                                    line[5], line[4], line[7], line[8],
-                                    line[13], line[14], line[9], line[10]
+                                    "Order", "Title", "Charge",
+                                    "Precursor_Mass", "Peptide",
+                                    "Peptide_Type", "Linker", "Peptide_Mass",
+                                    "Modifications", "Evalue", "Score",
+                                    "Precursor_Mass_Error(Da)",
+                                    "Precursor_Mass_Error(ppm)", "Proteins",
+                                    "Protein_Type", "FileID", "LabelID",
+                                    "Alpha_Matched", "Beta_Matched",
+                                    "Alpha_Evalue", "Beta_Evalue", "pep1",
+                                    "pep1(code1)", "pep1[code1]",
+                                    "code1_in_fasta", "pep2", "pep2(code2)",
+                                    "pep2[code2]", "code2_in_fasta"
                                 ])
-                            else:
-                                writer.writerow(line)
+                    else:
+                        with open(output_dir + str(line[1].split(".")[0]) +
+                                  ".csv",
+                                  "a",
+                                  newline='') as outfile_append:
+                            writer = csv.writer(outfile_append)
+                            if "." in line[1]:
+                                if del_mode == True:
+                                    writer.writerow([
+                                        line[0], line[1], line[2], line[3],
+                                        line[5], line[4], line[7], line[8],
+                                        line[13], line[14], line[9], line[10]
+                                    ])
+                                else:
+                                    writer.writerow(line)
 
 
 #  Input ms_csv_file
@@ -533,10 +540,10 @@ def analyze_distance_neighboorhood(fasta,
 
 
 if __name__ == "__main__":
-    # plink2normalform(
-    #     "G:/MSdata/230801LAMPLUS/BSA/reports/bsa_con_2023.08.01.filtered_cross-linked_spectra.csv",
-    #     "G:/MSdata/230801LAMPLUS/BSA/reports//crosslink_withdis/",
-    #     del_mode=False)
+    plink2normalform(
+        r"G:\MSdata\231102BSQAdK_zhaort\ADK_con\reports\adk_con_2023.11.02.filtered_cross-linked_spectra_modified.csv",
+        r"G:\MSdata\231102BSQAdK_zhaort\ADK_con\reports/cross-link/",
+        del_mode=False)
     # plink2normalform(
     #     "G:/MSdata/230703BQMCOLD/BSA/reports/Lactoferrin_con_2023.07.03.filtered_cross-linked_spectra.csv",
     #     "G:/MSdata/230703BQMCOLD/BSA/reports/crosslink_withdis/",
@@ -558,25 +565,25 @@ if __name__ == "__main__":
     #     "C:/Users/jiang/OneDrive/Research/tc/articles/diazirine/crosslink/LBM/reports-4/looplink_withdis/",
     #     del_mode=False)
 
-    import settings as set
+    # import settings as set
 
-    with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
-        fasta = "".join([i.strip() for i in f][1:])
-    print(fasta)
+    # with open(set.fasta_root + "Lactoferrin" + ".fasta", "r") as f:
+    #     fasta = "".join([i.strip() for i in f][1:])
+    # print(fasta)
 
-    analyze_distance_neighboorhood(
-        fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
+    # analyze_distance_neighboorhood(
+    #     fasta, set.pdb_root + "LF-AF-Q6LBN7-F1-model_v4.pdb")
 
-    with open(set.fasta_root + "bsa" + ".fasta", "r") as f:
-        fasta = "".join([i.strip() for i in f][1:])
-    print(fasta)
+    # with open(set.fasta_root + "bsa" + ".fasta", "r") as f:
+    #     fasta = "".join([i.strip() for i in f][1:])
+    # print(fasta)
 
-    analyze_distance_neighboorhood(
-        fasta, set.pdb_root + "BSA-AF-P02769-F1-model_v4.pdb")
+    # analyze_distance_neighboorhood(
+    #     fasta, set.pdb_root + "BSA-AF-P02769-F1-model_v4.pdb")
 
-    with open(set.fasta_root + "conalbumin" + ".fasta", "r") as f:
-        fasta = "".join([i.strip() for i in f][1:])
-    print(fasta)
+    # with open(set.fasta_root + "conalbumin" + ".fasta", "r") as f:
+    #     fasta = "".join([i.strip() for i in f][1:])
+    # print(fasta)
 
-    analyze_distance_neighboorhood(
-        fasta, set.pdb_root + "CA-AF-P02789-F1-model_v4.pdb")
+    # analyze_distance_neighboorhood(
+    #     fasta, set.pdb_root + "CA-AF-P02789-F1-model_v4.pdb")
