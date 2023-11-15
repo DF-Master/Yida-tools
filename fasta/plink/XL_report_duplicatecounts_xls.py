@@ -4,9 +4,10 @@ import pandas as pd
 # Define Pos Column
 column1 = 26  # Column AA, start from 0
 column2 = 32  # Column AG, start from 0
+rtscolumn = 38  # Column AM, start from 0
 
 # Set the path to the directory containing the Excel files and the directory to save the output files
-xlsx_dir = r'C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type2XL\combined_data\duplicates'
+xlsx_dir = r'C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type1XL\combined_data'
 output_dir = os.path.join(xlsx_dir, 'duplicates')
 
 # Create the output directory if it doesn't exist
@@ -24,6 +25,9 @@ for file in os.listdir(xlsx_dir):
         df['Duplicates'] = df.groupby(
             [df.columns[column1],
              df.columns[column2]])[df.columns[0]].transform('count')
+        # Add a new column "allPSMs" and calculate the sum of values in column AM for rows with the same value in column AA and column AG
+        df['allPSMs'] = df.groupby([df.columns[column1], df.columns[column2]
+                                    ])[df.columns[rtscolumn]].transform('sum')
 
         # Drop rows with the same value in the 27th and 33rd columns
         df = df.drop_duplicates(

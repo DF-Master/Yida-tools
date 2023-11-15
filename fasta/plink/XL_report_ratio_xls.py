@@ -2,7 +2,7 @@ import os
 import openpyxl as xl
 
 # Path to the folder containing the xlsx files
-folder_path = r"C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\BSA\reports-3\BSA-type2XL\combined_data\duplicates"
+folder_path = r"C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type1XL\combined_data\duplicates"
 
 # List of valid characters for columns X and AD
 valid_characters = "ACDEFGHIKLMNPQRSTVWY"
@@ -10,9 +10,9 @@ valid_characters = "ACDEFGHIKLMNPQRSTVWY"
 # Create a new xlsx file for the report
 report_folder = os.path.join(folder_path, "report")
 os.makedirs(report_folder, exist_ok=True)
-report_filename = os.path.join(report_folder,
-                               "BSA_residue_counts_dts_3_rts_2.xlsx"
-                               )  # Change the name of the report file !!!!!
+report_filename = os.path.join(
+    report_folder, "LF_residue_counts_dts_3_rts_3_intersection_type1.xlsx"
+)  # Change the name of the report file !!!!!
 report_workbook = xl.Workbook()
 report_workbook.remove(report_workbook.active)
 # Create a new sheet in the workbook
@@ -21,7 +21,7 @@ report_workbook.remove(report_workbook.active)
 column1 = 23  # Column X,start from 0
 colume2 = 29  # Column AD,start from 0
 duplicate_ts = 3  # Least duplicate times
-repeat_ts = 2  # Least repeat times
+repeat_ts = 3  # Least repeat times
 score_ts = 1  # Score threshold
 repeat_ts_column = 38  # Column AM,start from 0
 duplicate_ts_column = 39  # Column AN,start from 0

@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # Define the directory where the files are located
-directory = r"C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type2XL"
+directory = r"C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type1XL"
 
 # Create a dictionary to store the combined data for each ID
 combined_data = {}
