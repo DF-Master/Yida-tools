@@ -2,7 +2,7 @@ import os
 import openpyxl as xl
 
 # Path to the folder containing the xlsx files
-folder_path = r"C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type1XL\combined_data\duplicates"
+folder_path = r"G:\MSdata\202310AHL\ADRM1\reports\cross-link/duplicates"
 
 # List of valid characters for columns X and AD
 valid_characters = "ACDEFGHIKLMNPQRSTVWY"
@@ -10,28 +10,29 @@ valid_characters = "ACDEFGHIKLMNPQRSTVWY"
 # Create a new xlsx file for the report
 report_folder = os.path.join(folder_path, "report")
 os.makedirs(report_folder, exist_ok=True)
-report_filename = os.path.join(
-    report_folder, "LF_residue_counts_dts_3_rts_3_intersection_type1.xlsx"
-)  # Change the name of the report file !!!!!
+report_filename = os.path.join(report_folder,
+                               "ADRM1_residue_counts_dts_1_rts_3_type2.xlsx"
+                               )  # Change the name of the report file !!!!!
 report_workbook = xl.Workbook()
 report_workbook.remove(report_workbook.active)
 # Create a new sheet in the workbook
 
 # Define Pos Column !!!!!
 column1 = 23  # Column X,start from 0
-colume2 = 29  # Column AD,start from 0
-duplicate_ts = 3  # Least duplicate times
+column2 = 27  # Column AB, start from 0
+duplicate_ts = 1  # Least duplicate times
 repeat_ts = 3  # Least repeat times
-score_ts = 1  # Score threshold
-repeat_ts_column = 38  # Column AM,start from 0
-duplicate_ts_column = 39  # Column AN,start from 0
-scorecolume = 10  # Column K,start from 0
+score_ts = 100  # Score threshold
+repeat_ts_column = 29  # start from 0
+duplicate_ts_column = 30  # start from 0
+scorecolumn = 10  # Column K,start from 0
 report_sheet = report_workbook.create_sheet("Residue Counts")
 
 # Iterate through each xlsx file in the folder
 for file_name in os.listdir(folder_path):
-    power = file_name.split(".")[0]
-    report_sheet = report_workbook.create_sheet(power)
+    if ".xlsx" in file_name and file_name != "word_counts.xlsx":
+        power = file_name.split(".")[0]
+        report_sheet = report_workbook.create_sheet(power)
 
     if file_name.endswith(".xlsx"):
         file_path = os.path.join(folder_path, file_name)
@@ -45,26 +46,30 @@ for file_name in os.listdir(folder_path):
 
         # Count the repeat times of each word other than "K" in columns
         for row in sheet.iter_rows(min_row=1, values_only=True):
-            cell_x = row[column1]
-            cell_ad = row[colume2]
-            cell_ts = row[repeat_ts_column]
-            cell_score = row[scorecolume]
-            cell_duplicate_ts = row[duplicate_ts_column]
-            if cell_x is not None and cell_x != "K" and cell_x in valid_characters and cell_ts >= repeat_ts and cell_score <= score_ts and cell_duplicate_ts >= duplicate_ts:
-                if cell_x in word_counts:
-                    word_counts[cell_x] += 1
-                    # add rows into sheet named "file_name"
-                    report_sheet.append(row)
-            elif cell_ad is not None and cell_ad in valid_characters and cell_ts >= repeat_ts and cell_score <= score_ts and cell_duplicate_ts >= duplicate_ts:
-                if cell_ad in word_counts:
-                    word_counts[cell_ad] += 1
-                    # add rows into sheet named "file_name"
-                    report_sheet.append(row)
-            elif report_sheet.max_row == 1 and report_sheet.max_column == 1:
-                report_sheet.append(row)
+            if not any(row):
+                continue
             else:
-                # print(cell_x, cell_ad)
-                pass
+                cell_x = row[column1]
+                cell_ad = row[column2]
+                cell_ts = row[repeat_ts_column]
+                cell_score = row[scorecolumn]
+                cell_duplicate_ts = row[duplicate_ts_column]
+                if cell_x is not None and cell_x != "K" and cell_x in valid_characters and cell_ts >= repeat_ts and cell_score <= score_ts and cell_duplicate_ts >= duplicate_ts:
+                    if cell_x in word_counts:
+                        word_counts[cell_x] += 1
+                        # add rows into sheet named "file_name"
+                        report_sheet.append(row)
+                elif cell_ad is not None and cell_ad in valid_characters and cell_ts >= repeat_ts and cell_score <= score_ts and cell_duplicate_ts >= duplicate_ts:
+                    if cell_ad in word_counts:
+                        word_counts[cell_ad] += 1
+                        # add rows into sheet named "file_name"
+                        report_sheet.append(row)
+                elif report_sheet.max_row == 1 and report_sheet.max_column == 1:
+                    report_sheet.append(row)
+                else:
+                    if cell_ts >= repeat_ts and cell_score <= score_ts and cell_duplicate_ts >= duplicate_ts:
+                        print(cell_x, cell_ad)
+                    pass
 
         print(word_counts)
         # Write the word counts to the report file

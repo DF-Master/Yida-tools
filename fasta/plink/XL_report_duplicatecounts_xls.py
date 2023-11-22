@@ -2,12 +2,12 @@ import os
 import pandas as pd
 
 # Define Pos Column
-column1 = 26  # Column AA, start from 0
-column2 = 32  # Column AG, start from 0
-rtscolumn = 38  # Column AM, start from 0
+column1 = 24  # start from 0
+column2 = 28  # start from 0
+rtscolumn = 29  # start from 0
 
 # Set the path to the directory containing the Excel files and the directory to save the output files
-xlsx_dir = r'C:\Users\jiang\OneDrive\Research\tc\articles\diazirine\crosslink\LBM\reports-4\LF-type1XL\combined_data'
+xlsx_dir = r'G:\MSdata\202310AHL\Hb\reports\cross-link/'
 output_dir = os.path.join(xlsx_dir, 'duplicates')
 
 # Create the output directory if it doesn't exist
