@@ -21,7 +21,8 @@ for file in os.listdir(csv_dir):
              df.columns[column2]])[df.columns[0]].transform('count')
         # Drop rows with the same value in the 27th and 33rd columns
         df = df.drop_duplicates(
-            subset=[df.columns[column1], df.columns[column2]])
+            subset=[df.columns[column1], df.columns[column2]]
+        )  # Cannot delete if subset has reverse value( eg. [111,222] and [222,111]), which not happened in this case (plink alpha pep will always be longer pep)
 
         # Save the modified DataFrame to an Excel file
         output_file = os.path.join(csv_dir,

@@ -6,19 +6,17 @@ def cal_distance_pos(animo_pos1,
                      pdb,
                      name='default',
                      chain1='A',
-                     chain2='A',
                      animo_core1='CA',
                      animo_core2='CA',
                      in_one_domain=True,
                      autoprint=False):
     parser = PDB.PDBParser()
     structure = parser.get_structure(name, pdb)
-    model = structure[0]
-    chain1 = chain1.upper()
-    chain2 = chain2.upper()
+    chain1 = chain1
+    model1 = structure[0][chain1]
     try:
-        residue1 = chain1[animo_pos1]  # Start from 1 not 0
-        residue2 = chain2[animo_pos2]
+        residue1 = model1[animo_pos1]  # Start from 1 not 0
+        residue2 = model1[animo_pos2]
         atom1 = residue1[animo_core1]
         atom2 = residue2[animo_core2]
         distance = atom1 - atom2
@@ -66,7 +64,7 @@ for sheet_name in sheet_names:
         for row in range(2, max_row + 1):
             pos1 = sheet.cell(row=row, column=column1).value
             pos2 = sheet.cell(row=row, column=column2).value
-            distance = cal_distance_pos(pos1, pos2, pdb_file)
+            distance = cal_distance_pos(pos1, pos2, pdb_file, autoprint=True)
             sheet.cell(row=row, column=max_col + 1, value=distance)
 
 # Save the modified workbook
