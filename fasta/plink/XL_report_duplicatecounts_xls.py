@@ -7,7 +7,7 @@ column2 = 28  # start from 0
 rtscolumn = 29  # start from 0
 
 # Set the path to the directory containing the Excel files and the directory to save the output files
-xlsx_dir = r'G:\MSdata\202310AHL\Hb\reports\cross-link/'
+xlsx_dir = r'G:\MSdata\221027ETF\Trans\reports\cross-link/'
 output_dir = os.path.join(xlsx_dir, 'duplicates')
 
 # Create the output directory if it doesn't exist

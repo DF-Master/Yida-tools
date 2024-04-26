@@ -2,7 +2,7 @@ import os
 import openpyxl as xl
 
 # Path to the folder containing the xlsx files
-folder_path = r"G:\MSdata\202310AHL\ADRM1\reports\cross-link/duplicates"
+folder_path = r"G:\MSdata\221027ETF\Trans\reports\cross-link//duplicates"
 
 # List of valid characters for columns X and AD
 valid_characters = "ACDEFGHIKLMNPQRSTVWY"
@@ -10,9 +10,9 @@ valid_characters = "ACDEFGHIKLMNPQRSTVWY"
 # Create a new xlsx file for the report
 report_folder = os.path.join(folder_path, "report")
 os.makedirs(report_folder, exist_ok=True)
-report_filename = os.path.join(report_folder,
-                               "ADRM1_residue_counts_dts_1_rts_3_type2.xlsx"
-                               )  # Change the name of the report file !!!!!
+report_filename = os.path.join(
+    report_folder, " trfe_human_residue_counts_dts_1_rts_1_type2.xlsx"
+)  # Change the name of the report file !!!!!
 report_workbook = xl.Workbook()
 report_workbook.remove(report_workbook.active)
 # Create a new sheet in the workbook
@@ -21,7 +21,7 @@ report_workbook.remove(report_workbook.active)
 column1 = 23  # Column X,start from 0
 column2 = 27  # Column AB, start from 0
 duplicate_ts = 1  # Least duplicate times
-repeat_ts = 3  # Least repeat times
+repeat_ts = 1  # Least repeat times
 score_ts = 100  # Score threshold
 repeat_ts_column = 29  # start from 0
 duplicate_ts_column = 30  # start from 0
@@ -81,7 +81,7 @@ for file_name in os.listdir(folder_path):
             # Add file name as header column
             report_sheet.cell(
                 row=1, column=report_sheet.max_column +
-                1).value = file_name.split("_")[-1].split(".")[0] + "mW"
+                1).value = file_name.split("_")[-1].split(".")[0] + ""
 
             # Add word and count for each file in new columns
             column_num = report_sheet.max_column  # Get the column number for the file name

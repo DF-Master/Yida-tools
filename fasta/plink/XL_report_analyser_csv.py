@@ -2,9 +2,9 @@ import csv
 
 # Specify the input and output file paths
 
-input_file = r"G:\MSdata\202310AHL\ADRM1\reports\ADRM1_con_2023.11.21.filtered_cross-linked_spectra.csv"
-output_file = r"G:\MSdata\202310AHL\ADRM1\reports\ADRM1_con_2023.11.21.filtered_cross-linked_spectra_modified.csv"
-fasta_file = r"G:\MSdata\fasta/ADRM1.fasta"
+input_file = r"G:\MSdata\221027ETF\Trans\reports\trfe_human_con_2022.10.29.filtered_cross-linked_spectra.csv"
+output_file = r"G:\MSdata\221027ETF\Trans\reports\trfe_human_con_2022.10.29.filtered_cross-linked_spectra_modified.csv"
+fasta_file = r"G:\MSdata\fasta/trfe_human.fasta"
 split_colume = 4  # start from 0, plink=4, spotlink=2
 
 

@@ -541,6 +541,6 @@ def analyze_distance_neighboorhood(fasta,
 
 if __name__ == "__main__":
     plink2normalform(
-        r"G:\MSdata\202310AHL\Hb\reports\Hb_con_2023.11.21.filtered_cross-linked_spectra_modified.csv",
-        r"G:\MSdata\202310AHL\Hb\reports\cross-link/",
+        r"G:\MSdata\221027ETF\Trans\reports\trfe_human_con_2022.10.29.filtered_cross-linked_spectra_modified.csv",
+        r"G:\MSdata\221027ETF\Trans\reports\cross-link/",
         del_mode=False)

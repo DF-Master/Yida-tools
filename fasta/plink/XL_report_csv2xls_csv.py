@@ -6,7 +6,7 @@ column1 = 28  # Column AC,start from 0
 column2 = 24  # Column Y,start from 0
 
 # Set the path to the directory containing the CSV files
-csv_dir = r'G:\MSdata\202310AHL\ADRM1\reports\cross-link/'
+csv_dir = r'G:\MSdata\221027ETF\Trans\reports\cross-link/'
 
 # Iterate over all files in the directory
 for file in os.listdir(csv_dir):
